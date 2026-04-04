@@ -1,0 +1,119 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import legacyImg from "@/assets/Our-Legacy-1.png";
+
+const WhoWeAre = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section
+      ref={ref}
+      id="who-we-are"
+      className="w-full py-24 md:py-36 bg-background overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+        {/* Left — Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative group"
+        >
+          <div className="relative overflow-hidden rounded-sm aspect-[4/5]">
+            <img
+              src={legacyImg}
+              alt="Urban Grand Heritage"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+            {/* Accent border */}
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-sm pointer-events-none" />
+          </div>
+          {/* Floating accent card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute -bottom-8 -right-6 md:-right-10 bg-foreground text-background px-8 py-6 shadow-xl"
+          >
+            <span className="block text-3xl font-display font-bold">25+</span>
+            <span className="block text-[10px] tracking-[0.25em] uppercase mt-1 opacity-70">Years of Craft</span>
+          </motion.div>
+        </motion.div>
+
+        {/* Right — Text */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-5"
+          >
+            Our Story
+          </motion.p>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground mb-2"
+          >
+            Who We Are
+          </motion.h2>
+
+          {/* Animated underline */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.55 }}
+            className="h-[1.5px] bg-foreground w-16 origin-left mb-8"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="space-y-5"
+          >
+            <p className="text-base md:text-lg text-muted-medium leading-relaxed font-light">
+              Urban Grand is the premium fashion label of{" "}
+              <span className="font-semibold text-foreground">Panchsheel Knitwears</span> — a legacy
+              built over decades of precision craftsmanship and an unwavering commitment to quality.
+            </p>
+            <p className="text-[15px] text-muted-medium leading-relaxed font-light">
+              From the looms of Ludhiana to wardrobes across India, we design knitwear that tells a
+              story — where tradition meets modern silhouette. Every stitch reflects the care of
+              skilled artisans and the vision of a brand that has always put quality first.
+            </p>
+            <p className="text-[15px] text-muted-medium leading-relaxed font-light">
+              We cater to men, women, and children — offering timeless cuts, premium yarns, and
+              seasonal collections that define contemporary Indian fashion.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.65 }}
+            className="mt-10 flex items-center gap-6"
+          >
+            <Link
+              to="/about/category/our-legacy"
+              className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-sm"
+            >
+              Know More
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default WhoWeAre;
