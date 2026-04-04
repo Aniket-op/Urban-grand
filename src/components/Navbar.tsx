@@ -50,7 +50,16 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  // Detect scroll to toggle hero/scrolled state
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // run once on mount
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Theme
   const [theme, setTheme] = useState(() => {
@@ -86,21 +95,30 @@ const Navbar = () => {
   return (
     <>
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
-      <nav className="h-20 flex items-center justify-between px-5 lg:px-12 sticky top-0 z-50 glass-light subtle-border">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+      <nav className={`h-20 flex items-center justify-between px-5 lg:px-12 sticky top-0 z-50 relative transition-all duration-500 ${scrolled ? "glass-light subtle-border" : "bg-transparent border-transparent"}`}>
+        {/* Logo — centered when at hero top, left-aligned when scrolled */}
+        <Link
+          to="/"
+          className={`flex items-center gap-3 group transition-all duration-500 ${!scrolled
+            ? "absolute left-1/2 -translate-x-1/2"
+            : "relative translate-x-0"
+            }`}
+        >
           <img
             src={logoUrl}
             alt="Urban Grand Logo"
-            className="h-[48px] w-[48px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105"
+            className="h-[48px] w-[48px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105 "
           />
           <span className="font-display text-[22px] font-semibold tracking-wide leading-none">
-            Urban Grand
+            URBAN GRAND
           </span>
         </Link>
 
-        {/* Desktop nav links */}
-        <div className="hidden md:flex gap-5 lg:gap-7 items-center h-full">
+        {/* Desktop nav links — hidden on hero top */}
+        <div
+          className={`hidden md:flex gap-5 lg:gap-7 items-center h-full transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
+        >
           {menuItems.map((item) => {
             if (item.to) {
               const active = location.pathname === item.to;
@@ -108,15 +126,13 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={`text-[13px] font-semibold uppercase tracking-widest transition-elegant relative group ${
-                    active ? "text-foreground" : "text-foreground/80 hover:text-foreground"
-                  }`}
+                  className={`text-[13px] font-semibold uppercase tracking-widest transition-elegant relative group ${active ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+                    }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-[-4px] left-0 w-full h-[0.5px] bg-foreground transition-transform origin-left ${
-                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}
+                    className={`absolute bottom-[-4px] left-0 w-full h-[0.5px] bg-foreground transition-transform origin-left ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
                   />
                 </Link>
               );
@@ -156,8 +172,11 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop right actions */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop right actions — hidden on hero top */}
+        <div
+          className={`hidden md:flex items-center gap-3 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
+        >
           {/* Language Dropdown */}
           <div
             className="relative"
@@ -165,7 +184,6 @@ const Navbar = () => {
             onMouseLeave={() => setLangOpen(false)}
           >
             <button className="flex items-center gap-1.5 text-[13px] text-foreground/80 hover:text-foreground transition-elegant font-semibold">
-              <Globe size={14} />
               <span>{currentLang.flag}</span>
               <span className="hidden lg:inline uppercase tracking-wide">{currentLang.label}</span>
               <ChevronDown
@@ -175,19 +193,17 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 mt-4 w-44 bg-background subtle-border-strong shadow-xl rounded-b-md transition-all duration-300 py-1 ${
-                langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
-              }`}
+              className={`absolute top-full right-0 mt-4 w-44 bg-background subtle-border-strong shadow-xl rounded-b-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+                }`}
             >
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
-                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${
-                    currentLang.code === lang.code
-                      ? "text-foreground font-semibold bg-soft"
-                      : "text-muted-medium hover:text-foreground hover:bg-soft"
-                  }`}
+                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
+                    ? "text-foreground font-semibold bg-soft"
+                    : "text-muted-medium hover:text-foreground hover:bg-soft"
+                    }`}
                 >
                   <span className="text-base">{lang.flag}</span>
                   {lang.label}
@@ -216,9 +232,10 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — hidden on hero top */}
         <button
-          className="md:hidden p-2 rounded-lg hover:bg-soft transition-elegant"
+          className={`md:hidden p-2 rounded-lg hover:bg-soft transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -297,11 +314,10 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => setCurrentLang(lang)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all ${
-                        currentLang.code === lang.code
-                          ? "border-foreground bg-foreground text-background"
-                          : "border-border text-muted-medium hover:border-foreground/50"
-                      }`}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all ${currentLang.code === lang.code
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border text-muted-medium hover:border-foreground/50"
+                        }`}
                     >
                       <span>{lang.flag}</span>
                       {lang.label}
