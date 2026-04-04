@@ -22,13 +22,13 @@ const AssociatesSection = () => {
   return (
     <section className="flex flex-col w-[80%] mx-auto justify-center py-10 lg:py-10 h-full w-full overflow-hidden bg-background">
       <div className="px-8 lg:px-14 mb-10 lg:mb-16">
-        <h2 className="text-2xl lg:text-3xl uppercase tracking-[0.35em] text-foreground font-semibold">
+        <h2 className="text-center text-2xl lg:text-3xl uppercase tracking-[0.35em] text-foreground font-semibold">
           Our Associates
         </h2>
-        <p className="mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">
+        <p className="text-center mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">
           We partner with brands that value quality, consistency, and growth. We go beyond manufacturing —
         </p>
-        <p className="mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
+        <p className="text-center mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
 
       </div>
 

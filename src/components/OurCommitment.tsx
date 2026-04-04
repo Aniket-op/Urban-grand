@@ -31,7 +31,7 @@ const OurCommitment = () => {
     <section className="w-full py-16 bg-background shrink-0 overflow-hidden">
 
       <div className="px-8 lg:px-14 mb-10 lg:mb-16">
-        <h2 className="text-2xl lg:text-3xl uppercase tracking-[0.35em] text-foreground font-semibold">
+        <h2 className="text-center text-2xl lg:text-3xl uppercase tracking-[0.35em] text-foreground font-semibold">
           Our Commitment
         </h2>
       </div>

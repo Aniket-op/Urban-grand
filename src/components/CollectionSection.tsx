@@ -239,17 +239,8 @@ const CollectionSlide = ({
           className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
             } gap-12 md:gap-16 lg:gap-24 items-center`}
         >
-          {slide.imageRight ? (
-            <>
-              {ContentCol}
-              {ImageCol}
-            </>
-          ) : (
-            <>
-              {ImageCol}
-              {ContentCol}
-            </>
-          )}
+          {ContentCol}
+          {ImageCol}
         </div>
       </div>
     </div>
