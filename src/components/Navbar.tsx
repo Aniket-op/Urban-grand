@@ -24,10 +24,8 @@ const menuItems: MenuItem[] = [
     label: "Discover Us",
     slug: "about",
     subcategories: [
-      { label: "Our Legacy", to: "/about/category/our-legacy" },
-      { label: "Philosophy & Core Values", to: "/about/category/philosophy-core-values" },
-      { label: "Mission & Vision", to: "/about/category/mission-vision" },
-      { label: "Our Brands", to: "/about/category/our-brands" },
+      { label: "Our Legacy & Brands", to: "/about/category/our-legacy" },
+      { label: "Mission, Vision & Philosophy", to: "/about/category/mission-vision" },
       { label: "Our Leadership", to: "/about/category/our-leadership" },
       { label: "Company Credentials", to: "/about/category/company-credentials" },
       { label: "Brochure", to: brochurePdf, download: true },

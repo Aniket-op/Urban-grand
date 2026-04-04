@@ -133,9 +133,8 @@ const CollectionSlide = ({
             <button
               key={i}
               onClick={() => setActiveImg(i)}
-              className={`h-12 w-10 rounded-sm overflow-hidden border-2 transition-all duration-200 ${
-                i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
-              }`}
+              className={`h-12 w-10 rounded-sm overflow-hidden border-2 transition-all duration-200 ${i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
+                }`}
             >
               <img src={img} alt="" className="h-full w-full object-cover" />
             </button>
@@ -178,11 +177,10 @@ const CollectionSlide = ({
             <button
               key={sub.label}
               onClick={() => handleSubClick(i)}
-              className={`relative px-5 py-2.5 text-[12px] font-semibold tracking-[0.1em] uppercase rounded-sm border transition-all duration-250 ${
-                i === activeSub
-                  ? "bg-foreground text-background border-foreground"
-                  : "border-border text-muted-medium hover:border-foreground/40 hover:text-foreground"
-              }`}
+              className={`relative px-5 py-2.5 text-[12px] font-semibold tracking-[0.1em] uppercase rounded-sm border transition-all duration-250 ${i === activeSub
+                ? "bg-foreground text-background border-foreground"
+                : "border-border text-muted-medium hover:border-foreground/40 hover:text-foreground"
+                }`}
             >
               {sub.label}
               {i === activeSub && (
@@ -238,9 +236,8 @@ const CollectionSlide = ({
     <div ref={ref} className="w-full py-20 md:py-28 border-b border-border/20 last:border-b-0">
       <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
         <div
-          className={`flex flex-col ${
-            slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
-          } gap-12 md:gap-16 lg:gap-24 items-center`}
+          className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
+            } gap-12 md:gap-16 lg:gap-24 items-center`}
         >
           {slide.imageRight ? (
             <>
@@ -279,20 +276,22 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 pt-24 pb-12"
+          className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={sectionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
+            <p className="text-center text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
               Our Range
             </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.01em] text-foreground">
+
+            <h2 className="text-center font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.01em] text-foreground">
               Our Collection
             </h2>
-            <div className="h-[1.5px] bg-foreground/20 w-16 mt-5" />
+
+            <div className="h-[1.5px] bg-foreground/20 w-16 mt-5 mx-auto" />
           </motion.div>
         </div>
 
