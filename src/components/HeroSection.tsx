@@ -13,7 +13,7 @@ const HeroSection = () => {
     const video = videoRef.current;
     if (video) {
       video.muted = true;
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
   }, []);
 
@@ -84,7 +84,7 @@ const HeroSection = () => {
           >
             <Link
               to="/about/category/mission-vision"
-              className="group bg-white text-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
+              className="group bg-background text-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
             >
               Our Vision
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
