@@ -104,7 +104,7 @@ const Navbar = () => {
         ref={navRef}
         className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)] ${scrolled
           ? "top-0 glass-corporate border-b border-border/40"
-          : "top-9 bg-transparent border-transparent"
+          : "top-3 bg-transparent border-transparent"
           }`}
       >
         {/*

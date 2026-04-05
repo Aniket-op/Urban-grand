@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import EnquiryModal from "@/components/EnquiryModal";
 
@@ -102,6 +102,18 @@ const CollectionSlideComponent = ({
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const currentImages = slide.subcategories[activeSub]?.images ?? [];
+
+  // Auto-cycle subcategories every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSub((prev) => {
+        const next = (prev + 1) % slide.subcategories.length;
+        return next;
+      });
+      setActiveImg(0);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [slide.subcategories.length]);
 
   const handleSubClick = (idx: number) => {
     setActiveSub(idx);
