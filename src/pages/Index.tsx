@@ -16,17 +16,28 @@ const Index = () => {
       {/* Hero — full screen, starts behind navbar overlay */}
       <HeroSection />
 
+      {/* Section divider */}
+      <div className="section-divider" />
+
       {/* Who We Are */}
       <WhoWeAre />
+
+      {/* Section divider */}
+      <div className="section-divider" />
 
       {/* Zig-Zag Collection Section */}
       <CollectionSection />
 
+      {/* Section divider */}
+      <div className="section-divider" />
+
       {/* Associates + Commitment */}
-      <div className="w-full max-w-[1600px] mx-auto overflow-hidden">
-        <AssociatesSection />
-        <OurCommitment />
-      </div>
+      <AssociatesSection />
+
+      {/* Section divider */}
+      <div className="section-divider" />
+
+      <OurCommitment />
 
       {/* Footer */}
       <Footer />

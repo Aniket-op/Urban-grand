@@ -87,12 +87,14 @@ const collections: CollectionSlide[] = [
 
 // ── Single collection slide ────────────────────────────────────────────────
 
-const CollectionSlide = ({
+const CollectionSlideComponent = ({
   slide,
   onEnquire,
+  isAlt,
 }: {
   slide: CollectionSlide;
   onEnquire: (category: string) => void;
+  isAlt: boolean;
 }) => {
   const [activeSub, setActiveSub] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
@@ -111,7 +113,7 @@ const CollectionSlide = ({
       initial={{ opacity: 0, x: slide.imageRight ? 60 : -60 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full md:w-[52%] aspect-[3/4] overflow-hidden rounded-sm flex-shrink-0 group"
+      className="relative w-full md:w-[52%] aspect-[3/4] overflow-hidden rounded-lg flex-shrink-0 group shadow-xl shadow-black/[0.06]"
     >
       <AnimatePresence mode="wait">
         <motion.img
@@ -133,7 +135,7 @@ const CollectionSlide = ({
             <button
               key={i}
               onClick={() => setActiveImg(i)}
-              className={`h-12 w-10 rounded-sm overflow-hidden border-2 transition-all duration-200 ${i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
+              className={`h-12 w-10 rounded-md overflow-hidden border-2 transition-all duration-200 ${i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
                 }`}
             >
               <img src={img} alt="" className="h-full w-full object-cover" />
@@ -152,23 +154,24 @@ const CollectionSlide = ({
       initial={{ opacity: 0, x: slide.imageRight ? -60 : 60 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col justify-center gap-8 flex-1 min-w-0"
+      className="flex flex-col justify-center gap-7 flex-1 min-w-0"
     >
-      <div>
+      {/* Content panel with subtle corporate card styling */}
+      <div className="p-6 md:p-8 lg:p-0">
         <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
           {slide.tag}
         </p>
         <h2 className="font-display text-4xl md:text-5xl lg:text-[3.2rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground">
           {slide.title}
         </h2>
-        <div className="h-[1.5px] bg-foreground/20 w-16 my-5" />
-        <p className="text-[15px] text-muted-medium leading-relaxed font-light max-w-[400px]">
+        <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 my-5" />
+        <p className="text-[15px] text-muted-medium leading-relaxed max-w-[420px]">
           {slide.description}
         </p>
       </div>
 
       {/* Subcategories */}
-      <div>
+      <div className="px-6 md:px-8 lg:px-0">
         <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-semibold mb-4">
           Browse by Category
         </p>
@@ -177,7 +180,7 @@ const CollectionSlide = ({
             <button
               key={sub.label}
               onClick={() => handleSubClick(i)}
-              className={`relative px-5 py-2.5 text-[12px] font-semibold tracking-[0.1em] uppercase rounded-sm border transition-all duration-250 ${i === activeSub
+              className={`relative px-5 py-2.5 text-[12px] font-semibold tracking-[0.1em] uppercase rounded-md border transition-all duration-250 ${i === activeSub
                 ? "bg-foreground text-background border-foreground"
                 : "border-border text-muted-medium hover:border-foreground/40 hover:text-foreground"
                 }`}
@@ -186,7 +189,7 @@ const CollectionSlide = ({
               {i === activeSub && (
                 <motion.div
                   layoutId={`sub-indicator-${slide.id}`}
-                  className="absolute inset-0 bg-foreground rounded-sm -z-10"
+                  className="absolute inset-0 bg-foreground rounded-md -z-10"
                 />
               )}
             </button>
@@ -195,29 +198,31 @@ const CollectionSlide = ({
       </div>
 
       {/* Active subcategory label */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeSub}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.25 }}
-          className="border-l-2 border-foreground/20 pl-5"
-        >
-          <p className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-1">
-            Currently Viewing
-          </p>
-          <p className="font-display text-xl font-semibold text-foreground">
-            {slide.subcategories[activeSub]?.label}
-          </p>
-        </motion.div>
-      </AnimatePresence>
+      <div className="px-6 md:px-8 lg:px-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSub}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.25 }}
+            className="border-l-2 border-foreground/15 pl-5"
+          >
+            <p className="text-[11px] tracking-[0.25em] uppercase text-muted-foreground mb-1">
+              Currently Viewing
+            </p>
+            <p className="font-display text-xl font-semibold text-foreground">
+              {slide.subcategories[activeSub]?.label}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
       {/* CTA */}
-      <div className="flex items-center gap-5 pt-2">
+      <div className="flex items-center gap-5 pt-2 px-6 md:px-8 lg:px-0">
         <button
           onClick={() => onEnquire(slide.id)}
-          className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-sm"
+          className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-md"
         >
           Enquire Now
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -233,7 +238,7 @@ const CollectionSlide = ({
   );
 
   return (
-    <div ref={ref} className="w-full py-20 md:py-28 border-b border-border/20 last:border-b-0">
+    <div ref={ref} className={`w-full py-20 md:py-28 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
       <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
         <div
           className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
@@ -267,31 +272,37 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16"
+          className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 py-20 md:py-28"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={sectionInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
+            className="text-center"
           >
-            <p className="text-center text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
               Our Range
             </p>
 
-            <h2 className="text-center font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.01em] text-foreground">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold tracking-[-0.01em] text-foreground">
               Our Collection
             </h2>
 
-            <div className="h-[1.5px] bg-foreground/20 w-16 mt-5 mx-auto" />
+            <div className="h-[2px] bg-[hsl(38,60%,50%)] w-16 mt-5 mx-auto" />
+
+            <p className="mt-6 max-w-2xl mx-auto text-muted-medium text-[15px] leading-relaxed">
+              Explore our premium range of knitwear designed for men, women, and children — crafted with quality yarns and contemporary styles.
+            </p>
           </motion.div>
         </div>
 
-        {/* Zig-zag slides */}
-        {collections.map((slide) => (
-          <CollectionSlide
+        {/* Zig-zag slides with alternating backgrounds */}
+        {collections.map((slide, idx) => (
+          <CollectionSlideComponent
             key={slide.id}
             slide={slide}
             onEnquire={handleEnquire}
+            isAlt={idx % 2 === 0}
           />
         ))}
       </section>

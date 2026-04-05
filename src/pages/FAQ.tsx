@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const faqs = [
   {
@@ -21,6 +23,35 @@ const faqs = [
   }
 ];
 
+const FAQItem = ({ faq, index }: { faq: typeof faqs[0]; index: number }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="corporate-card rounded-xl overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between p-6 text-left hover:bg-muted/20 transition-colors"
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-[13px] font-heading font-bold text-muted-soft">{`0${index + 1}`}</span>
+          <h3 className="text-lg font-semibold text-foreground">{faq.question}</h3>
+        </div>
+        <ChevronDown
+          size={18}
+          className={`text-muted-foreground transition-transform duration-300 flex-shrink-0 ml-4 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-40" : "max-h-0"}`}>
+        <div className="px-6 pb-6 pt-0">
+          <div className="pl-10 border-l-2 border-[hsl(38,60%,50%)]/40">
+            <p className="text-muted-medium leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const FAQ = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col pt-20">
@@ -28,28 +59,29 @@ const FAQ = () => {
       
       <main className="flex-1 w-full max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-12">
         <div className="text-center space-y-4">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold">
+            Support
+          </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground">
             Frequently Asked Questions
           </h1>
-          <p className="text-muted-medium text-lg">
+          <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mx-auto mt-2" />
+          <p className="text-muted-medium text-lg max-w-lg mx-auto">
             Find answers to common questions about our products and services.
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-card p-6 rounded-2xl border border-border shadow-sm">
-              <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
-              <p className="text-muted-medium leading-relaxed">{faq.answer}</p>
-            </div>
+            <FAQItem key={index} faq={faq} index={index} />
           ))}
         </div>
 
-        <div className="text-center pt-8 border-t border-border">
+        <div className="text-center pt-8 border-t border-border/40">
           <p className="text-muted-medium mb-4">Still have questions?</p>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-elegant"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-md bg-foreground text-background font-semibold hover:opacity-90 transition-elegant text-sm tracking-wide"
           >
             Contact Us
           </Link>

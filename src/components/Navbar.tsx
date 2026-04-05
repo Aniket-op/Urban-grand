@@ -1,4 +1,4 @@
-import { ChevronDown, Menu, X, Sun, Moon, Globe, Monitor, LogIn } from "lucide-react";
+import { ChevronDown, Menu, X, Sun, Moon, Globe, Monitor, LogIn, Mail, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoUrl from "@/assets/urbangrant.jpeg";
@@ -92,8 +92,33 @@ const Navbar = () => {
 
   return (
     <>
+      {/* ── TOP INFO BAR ─────────────────────────────────────────────── */}
+      <div className={`fixed top-0 w-full z-[51] transition-all duration-500 ${
+        scrolled
+          ? "h-0 opacity-0 overflow-hidden"
+          : "h-9 opacity-100"
+      }`}>
+        <div className="h-full bg-[hsl(220,25%,12%)] text-white/80 flex items-center justify-center gap-8 text-[11px] tracking-wide font-medium">
+          <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <Mail size={12} />
+            <span className="hidden sm:inline">URBANGRAND78@GMAIL.COM</span>
+          </a>
+          <span className="hidden sm:inline text-white/20">|</span>
+          <a href="tel:+917696880871" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <Phone size={12} />
+            <span>(+91) 76968-80871</span>
+          </a>
+          <span className="hidden md:inline text-white/20">|</span>
+          <span className="hidden md:inline text-white/60">Trusted Craftsmanship Since 1978</span>
+        </div>
+      </div>
+
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
-      <nav className={`h-20 flex items-center justify-between px-5 lg:px-12 fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "glass-light subtle-border" : "bg-transparent border-transparent"}`}>
+      <nav className={`h-[72px] flex items-center justify-between px-5 lg:px-12 fixed w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "top-0 glass-corporate border-b border-border/40"
+          : "top-9 bg-transparent border-transparent"
+      }`}>
         {/* Logo — centered when at hero top, left-aligned when scrolled */}
         <Link
           to="/"
@@ -105,9 +130,9 @@ const Navbar = () => {
           <img
             src={logoUrl}
             alt="Urban Grand Logo"
-            className="h-[48px] w-[48px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105 "
+            className="h-[44px] w-[44px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105 "
           />
-          <span className={`font-display text-[22px] font-semibold tracking-wide leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
+          <span className={`font-heading text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
             URBAN GRAND
           </span>
         </Link>
@@ -124,12 +149,12 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={`text-[13px] font-semibold uppercase tracking-widest transition-elegant relative group ${active ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+                  className={`text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group ${active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
                     }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-[-4px] left-0 w-full h-[0.5px] bg-foreground transition-transform origin-left ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                   />
                 </Link>
@@ -138,19 +163,19 @@ const Navbar = () => {
 
             return (
               <div key={item.label} className="relative group h-full flex items-center">
-                <button className="flex items-center gap-1 text-[13px] font-semibold uppercase tracking-widest text-foreground/80 hover:text-foreground transition-elegant">
+                <button className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-foreground/70 hover:text-foreground transition-elegant">
                   {item.label}
                   <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                 </button>
 
-                <div className="absolute top-[64px] left-1/2 -translate-x-1/2 w-52 bg-background subtle-border-strong shadow-xl rounded-b-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 py-2">
+                <div className="absolute top-[60px] left-1/2 -translate-x-1/2 w-56 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 py-1.5">
                   {item.subcategories.map((sub) =>
                     sub.download ? (
                       <a
                         key={sub.label}
                         href={sub.to}
                         download="PANCHSHEEL_BROCHURE.pdf"
-                        className="block px-6 py-2.5 text-sm text-muted-medium hover:text-foreground hover:bg-soft transition-colors"
+                        className="flex items-center px-5 py-2.5 text-[13px] text-muted-medium hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
                       >
                         {sub.label}
                       </a>
@@ -158,7 +183,7 @@ const Navbar = () => {
                       <Link
                         key={sub.label}
                         to={sub.to}
-                        className="block px-6 py-2.5 text-sm text-muted-medium hover:text-foreground hover:bg-soft transition-colors"
+                        className="flex items-center px-5 py-2.5 text-[13px] text-muted-medium hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
                       >
                         {sub.label}
                       </Link>
@@ -181,7 +206,7 @@ const Navbar = () => {
             onMouseEnter={() => setLangOpen(true)}
             onMouseLeave={() => setLangOpen(false)}
           >
-            <button className="flex items-center gap-1.5 text-[13px] text-foreground/80 hover:text-foreground transition-elegant font-semibold">
+            <button className="flex items-center gap-1.5 text-[12px] text-foreground/70 hover:text-foreground transition-elegant font-semibold">
               <span>{currentLang.flag}</span>
               <span className="hidden lg:inline uppercase tracking-wide">{currentLang.label}</span>
               <ChevronDown
@@ -191,7 +216,7 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 mt-4 w-44 bg-background subtle-border-strong shadow-xl rounded-b-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
                 }`}
             >
               {languages.map((lang) => (
@@ -199,8 +224,8 @@ const Navbar = () => {
                   key={lang.code}
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
                   className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
-                    ? "text-foreground font-semibold bg-soft"
-                    : "text-muted-medium hover:text-foreground hover:bg-soft"
+                    ? "text-foreground font-semibold bg-muted/50"
+                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"
                     }`}
                 >
                   <span className="text-base">{lang.flag}</span>
@@ -213,7 +238,7 @@ const Navbar = () => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-soft transition-elegant text-foreground/80 hover:text-foreground"
+            className="p-2 rounded-md hover:bg-muted/50 transition-elegant text-foreground/70 hover:text-foreground"
             aria-label="Toggle theme"
             title={`Theme: ${theme}`}
           >
@@ -223,7 +248,7 @@ const Navbar = () => {
           {/* Login Button */}
           <button
             onClick={() => setLoginOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-foreground/25 text-[12px] font-semibold tracking-wide uppercase text-foreground/80 hover:text-foreground hover:border-foreground transition-elegant"
+            className="flex items-center gap-2 px-5 py-2 rounded-md border border-foreground/20 text-[11px] font-semibold tracking-[0.1em] uppercase text-foreground/70 hover:text-foreground hover:border-foreground/40 hover:bg-muted/30 transition-elegant"
           >
             <LogIn size={13} />
             Login
@@ -232,7 +257,7 @@ const Navbar = () => {
 
         {/* Mobile hamburger — hidden on hero top */}
         <button
-          className={`md:hidden p-2 rounded-lg hover:bg-soft transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          className={`md:hidden p-2 rounded-lg hover:bg-muted/50 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
             }`}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
@@ -242,7 +267,7 @@ const Navbar = () => {
 
         {/* Mobile dropdown */}
         {mobileOpen && (
-          <div className="absolute top-20 left-0 right-0 h-[calc(100vh-80px)] overflow-y-auto bg-background/95 backdrop-blur-xl subtle-border-strong flex flex-col pt-4 pb-12 md:hidden shadow-lg z-50">
+          <div className="absolute top-[72px] left-0 right-0 h-[calc(100vh-72px)] overflow-y-auto bg-background/98 backdrop-blur-xl border-t border-border/40 flex flex-col pt-4 pb-12 md:hidden shadow-lg z-50">
             {menuItems.map((item) => {
               if (item.to) {
                 return (
@@ -250,7 +275,7 @@ const Navbar = () => {
                     key={item.label}
                     to={item.to}
                     onClick={() => setMobileOpen(false)}
-                    className="px-6 py-4 text-[15px] font-semibold uppercase tracking-widest text-foreground/80 hover:text-foreground hover:bg-soft transition-colors border-b border-border/40"
+                    className="px-6 py-4 text-[14px] font-semibold uppercase tracking-[0.1em] text-foreground/80 hover:text-foreground hover:bg-muted/30 transition-colors border-b border-border/30"
                   >
                     {item.label}
                   </Link>
@@ -259,10 +284,10 @@ const Navbar = () => {
 
               const isExpanded = mobileExpanded === item.label;
               return (
-                <div key={item.label} className="border-b border-border/40">
+                <div key={item.label} className="border-b border-border/30">
                   <button
                     onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
-                    className="w-full flex items-center justify-between px-6 py-4 text-[15px] font-semibold uppercase tracking-widest text-foreground/80 hover:text-foreground transition-colors"
+                    className="w-full flex items-center justify-between px-6 py-4 text-[14px] font-semibold uppercase tracking-[0.1em] text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {item.label}
                     <ChevronDown
@@ -274,7 +299,7 @@ const Navbar = () => {
                   <div
                     className={`overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-96" : "max-h-0"}`}
                   >
-                    <div className="bg-soft/50 py-2">
+                    <div className="bg-muted/20 py-2">
                       {item.subcategories.map((sub) =>
                         sub.download ? (
                           <a
@@ -282,7 +307,7 @@ const Navbar = () => {
                             href={sub.to}
                             download="PANCHSHEEL_BROCHURE.pdf"
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-soft transition-colors"
+                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-muted/30 transition-colors"
                           >
                             {sub.label}
                           </a>
@@ -291,7 +316,7 @@ const Navbar = () => {
                             key={sub.label}
                             to={sub.to}
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-soft transition-colors"
+                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-muted/30 transition-colors"
                           >
                             {sub.label}
                           </Link>
@@ -312,7 +337,7 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => setCurrentLang(lang)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all ${currentLang.code === lang.code
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${currentLang.code === lang.code
                         ? "border-foreground bg-foreground text-background"
                         : "border-border text-muted-medium hover:border-foreground/50"
                         }`}
@@ -324,10 +349,10 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-6 border-t border-border/40">
+              <div className="flex items-center justify-between pt-6 border-t border-border/30">
                 <button
                   onClick={toggleTheme}
-                  className="flex items-center gap-2 p-2 rounded-full hover:bg-soft transition-elegant text-foreground/80 hover:text-foreground font-semibold text-sm"
+                  className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-elegant text-foreground/80 hover:text-foreground font-semibold text-sm"
                 >
                   {theme === "light" ? (
                     <><Moon size={18} /> Dark Mode</>
@@ -340,7 +365,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => { setLoginOpen(true); setMobileOpen(false); }}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-xs font-semibold tracking-wide hover:opacity-85 transition-elegant"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-foreground text-background text-xs font-semibold tracking-wide hover:opacity-85 transition-elegant"
                 >
                   <LogIn size={13} />
                   Login
@@ -358,10 +383,10 @@ const Navbar = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[70]"
             onClick={() => setLoginOpen(false)}
           />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-full max-w-md bg-background subtle-border-strong shadow-2xl rounded-sm p-10">
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-full max-w-md bg-background border border-border/60 shadow-2xl rounded-lg p-10">
             <button
               onClick={() => setLoginOpen(false)}
-              className="absolute top-5 right-5 p-2 hover:bg-soft rounded-full transition-elegant text-muted-medium"
+              className="absolute top-5 right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-muted-medium"
               aria-label="Close login"
             >
               <X size={18} />
@@ -380,7 +405,7 @@ const Navbar = () => {
                 <input
                   type="email"
                   placeholder="you@example.com"
-                  className="w-full bg-background border border-border px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm"
+                  className="w-full bg-background border border-border px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-md"
                 />
               </div>
               <div>
@@ -390,12 +415,12 @@ const Navbar = () => {
                 <input
                   type="password"
                   placeholder="••••••••"
-                  className="w-full bg-background border border-border px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm"
+                  className="w-full bg-background border border-border px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-md"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-foreground text-background py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-80 transition-elegant rounded-sm"
+                className="w-full bg-foreground text-background py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-80 transition-elegant rounded-md"
               >
                 Sign In
               </button>

@@ -82,7 +82,7 @@ const Contact = () => {
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2">
 
         {/* ── Left: Image Slideshow ── */}
-        <div className="relative hidden lg:block overflow-hidden bg-primary">
+        <div className="relative hidden lg:block overflow-hidden bg-[hsl(220,25%,12%)]">
           {/* Slides */}
           {activeSlides.map((slide, i) => (
             <div
@@ -111,13 +111,13 @@ const Contact = () => {
           {/* Prev / Next arrows */}
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-elegant"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-md bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-elegant"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-elegant"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-md bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-elegant"
           >
             <ChevronRight size={18} />
           </button>
@@ -128,14 +128,14 @@ const Contact = () => {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`h-1.5 rounded-full transition-all transition-elegant ${i === current ? "bg-white w-6" : "bg-white/40 w-2"}`}
+                className={`h-[3px] rounded-full transition-all transition-elegant ${i === current ? "bg-white w-8" : "bg-white/40 w-3"}`}
               />
             ))}
           </div>
         </div>
 
         {/* ── Right: Enquiry Form ── */}
-        <div className="overflow-y-auto py-10 lg:py-0 flex flex-col justify-center">
+        <div className="overflow-y-auto py-10 lg:py-0 flex flex-col justify-center bg-background">
           <EnquiryForm />
         </div>
       </div>

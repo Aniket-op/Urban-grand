@@ -18,96 +18,108 @@ const platformLinks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#0a0a0a] text-zinc-300 px-5 sm:px-8 lg:px-16 pt-16 pb-8 font-sans">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 mb-16">
+    <footer className="w-full bg-[hsl(220,25%,8%)] text-zinc-300 font-sans">
+      {/* Decorative gold accent line */}
+      <div className="h-[3px] bg-gradient-to-r from-transparent via-[hsl(38,60%,50%)] to-transparent" />
 
-        {/* Brand & Info Column */}
-        <div className="flex flex-col gap-6 lg:w-1/4">
-          <Link to="/" className="inline-block">
-            <img src={logoUrl} alt="UrbanGrand Logo" className="h-14 w-auto rounded-sm bg-white p-1" />
-          </Link>
-          <div className="space-y-1.5 text-sm text-zinc-400 font-medium tracking-wide">
-            <p className="font-display text-2xl text-zinc-300">UrbanGrand</p>
-          </div>
-          {/* Social Icons */}
-          <div className="flex gap-3 mt-2">
-            {[Linkedin, Facebook, Instagram].map((Icon, i) => (
-              <a key={i} href="#" className="flex items-center justify-center w-8 h-8 rounded-md bg-zinc-800/80 hover:bg-zinc-700 transition-colors text-zinc-400 hover:text-white">
-                <Icon size={16} />
-              </a>
-            ))}
-          </div>
-        </div>
+      <div className="px-5 sm:px-8 lg:px-16 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 lg:gap-8 mb-16">
 
-        {/* Links Columns container */}
-        <div className="flex flex-col md:flex-row gap-12 lg:gap-24 lg:w-3/4 lg:justify-end">
-
-          {/* Platform */}
-          <div className="flex flex-col gap-6 min-w-[140px]">
-            <h3 className="text-white font-semibold text-[15px]">Platform</h3>
-            <ul className="space-y-4">
-              {platformLinks.map((item) => (
-                <li key={item.label}>
-                  <Link to={item.to} className="flex items-center text-[13px] text-zinc-400 hover:text-white transition-colors">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-500 mr-3 flex-shrink-0" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div className="flex flex-col gap-6 min-w-[140px]">
-            <h3 className="text-white font-semibold text-[15px]">Company</h3>
-            <ul className="space-y-4">
-              {companyLinks.map((item) => (
-                <li key={item.label}>
-                  <Link to={item.to} className="flex items-center text-[13px] text-zinc-400 hover:text-white transition-colors">
-                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 mr-3 flex-shrink-0" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="flex flex-col gap-6 min-w-[200px]">
-            <h3 className="text-white font-semibold text-[15px]">Contact</h3>
-            <ul className="space-y-4 text-[13px] text-zinc-400">
-              <li>
-                <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center hover:text-white transition-colors lowercase">
-                  <Mail size={16} className="text-gray-500 mr-3 flex-shrink-0" />
-                  URBANGRAND78@GMAIL.COM
+          {/* Brand & Info Column */}
+          <div className="flex flex-col gap-5 lg:w-1/4">
+            <Link to="/" className="inline-block">
+              <img src={logoUrl} alt="UrbanGrand Logo" className="h-14 w-auto rounded-md bg-white p-1.5" />
+            </Link>
+            <div className="space-y-1">
+              <p className="font-heading text-xl font-bold text-white tracking-wide">UrbanGrand</p>
+              <p className="text-[13px] text-zinc-400 leading-relaxed">Premium knitwear by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
+            </div>
+            {/* Social Icons */}
+            <div className="flex gap-3 mt-2">
+              {[Linkedin, Facebook, Instagram].map((Icon, i) => (
+                <a key={i} href="#" className="flex items-center justify-center w-9 h-9 rounded-md bg-zinc-800/60 border border-zinc-700/40 hover:bg-zinc-700 hover:border-zinc-600 transition-all text-zinc-400 hover:text-white">
+                  <Icon size={16} />
                 </a>
-              </li>
-              <li>
-                <div className="flex items-start">
-                  <Phone size={16} className="text-gray-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <div className="flex flex-col gap-1">
-                    <span>(+91) 76968-80871</span>
-                    <span>(+91) 94170-15928</span>
-                    <span>(+91) 98888-91485</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Links Columns container */}
+          <div className="flex flex-col md:flex-row gap-12 lg:gap-24 lg:w-3/4 lg:justify-end">
+
+            {/* Platform */}
+            <div className="flex flex-col gap-5 min-w-[140px]">
+              <h3 className="text-white font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Platform</h3>
+              <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
+              <ul className="space-y-3.5">
+                {platformLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link to={item.to} className="flex items-center text-[13px] text-zinc-400 hover:text-white transition-colors group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div className="flex flex-col gap-5 min-w-[140px]">
+              <h3 className="text-white font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Company</h3>
+              <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
+              <ul className="space-y-3.5">
+                {companyLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link to={item.to} className="flex items-center text-[13px] text-zinc-400 hover:text-white transition-colors group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="flex flex-col gap-5 min-w-[200px]">
+              <h3 className="text-white font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Contact</h3>
+              <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
+              <ul className="space-y-3.5 text-[13px] text-zinc-400">
+                <li>
+                  <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center hover:text-white transition-colors lowercase">
+                    <Mail size={15} className="text-zinc-500 mr-3 flex-shrink-0" />
+                    URBANGRAND78@GMAIL.COM
+                  </a>
+                </li>
+                <li>
+                  <div className="flex items-start">
+                    <Phone size={15} className="text-zinc-500 mr-3 flex-shrink-0 mt-0.5" />
+                    <div className="flex flex-col gap-1">
+                      <span>(+91) 76968-80871</span>
+                      <span>(+91) 94170-15928</span>
+                      <span>(+91) 98888-91485</span>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li className="pt-2">
-                <a href="https://maps.app.goo.gl/QQFf4Q21gVMyjt8F8" target="_blank" rel="noopener noreferrer" className="flex items-start text-zinc-400 hover:text-white transition-colors">
-                  <MapPin size={16} className="text-gray-500 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">213/15-C, NEW KUNDAN PURI,<br />CIVIL LINES, LUDHIANA-141001 PUNJAB</span>
-                </a>
-              </li>
-            </ul>
+                </li>
+                <li className="pt-1">
+                  <a href="https://maps.app.goo.gl/QQFf4Q21gVMyjt8F8" target="_blank" rel="noopener noreferrer" className="flex items-start text-zinc-400 hover:text-white transition-colors">
+                    <MapPin size={15} className="text-zinc-500 mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">213/15-C, NEW KUNDAN PURI,<br />CIVIL LINES, LUDHIANA-141001 PUNJAB</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </div>
-
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto border-t border-zinc-800/60 pt-6">
-        <p className="text-[11px] text-zinc-500 font-medium">
-          © {new Date().getFullYear()} Panchsheel Knitwears. All rights reserved.
-        </p>
+        <div className="max-w-7xl mx-auto border-t border-zinc-800/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-zinc-500 font-medium">
+            © {new Date().getFullYear()} Panchsheel Knitwears. All rights reserved.
+          </p>
+          <p className="text-[10px] text-zinc-600 tracking-wider uppercase">
+            Premium Knitwear Manufacturing Since 1978
+          </p>
+        </div>
       </div>
     </footer>
   );

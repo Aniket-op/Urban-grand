@@ -1,3 +1,5 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import associate1 from "@/assets/associate1_montecarlo.png";
 import associate2 from "@/assets/associate2_killerKing.png";
 import associate3 from "@/assets/associate3_duke.jpg";
@@ -19,32 +21,54 @@ const associateImages = [
 ];
 
 const AssociatesSection = () => {
-  return (
-    <section className="flex flex-col w-[80%] mx-auto justify-center py-10 lg:py-10 h-full w-full overflow-hidden bg-background">
-      <div className="px-8 lg:px-14 mb-10 lg:mb-16">
-        <h2 className="text-center text-2xl lg:text-3xl uppercase tracking-[0.35em] text-foreground font-semibold">
-          Our Associates
-        </h2>
-        <p className="text-center mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">
-          We partner with brands that value quality, consistency, and growth. We go beyond manufacturing —
-        </p>
-        <p className="text-center mx-auto lg:mx-0 text-base sm:text-lg text-muted-soft mt-5 sm:mt-6 leading-relaxed">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
+  return (
+    <section ref={ref} className="w-full py-20 lg:py-28 bg-section-alt overflow-hidden">
+      <div className="max-w-7xl mx-auto px-8 lg:px-14">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-6"
+        >
+          <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
+            Trusted Partners
+          </p>
+          <h2 className="text-center font-display text-3xl md:text-4xl lg:text-[2.8rem] font-bold uppercase tracking-[0.08em] text-foreground">
+            Our Associates
+          </h2>
+          <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mt-5 mx-auto" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
+          <p className="text-base text-muted-medium leading-relaxed">
+            We partner with brands that value quality, consistency, and growth. We go beyond manufacturing —
+          </p>
+          <p className="text-base text-muted-medium leading-relaxed mt-2">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
+        </motion.div>
       </div>
 
       {/* Infinite Carousel */}
-      <div className="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-background before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-background after:to-transparent after:content-['']">
+      <div className="relative w-full flex overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-24 before:bg-gradient-to-r before:from-[hsl(215,18%,96%)] dark:before:from-[hsl(220,18%,8%)] before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-24 after:bg-gradient-to-l after:from-[hsl(215,18%,96%)] dark:after:from-[hsl(220,18%,8%)] after:to-transparent after:content-['']">
         {/* We use two sets of images to create a seamless infinite loop */}
-        <div className="flex w-max animate-scroll gap-4 sm:gap-8 lg:gap-12 px-4 hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-scroll gap-6 sm:gap-10 lg:gap-14 px-4 hover:[animation-play-state:paused]">
           {[...associateImages, ...associateImages].map((img, index) => (
             <div
               key={index}
-              className="group flex flex-col justify-center items-center w-[120px] sm:w-[180px] md:w-[220px] h-[80px] sm:h-[120px] rounded-xl bg-white subtle-border overflow-hidden shrink-0 shadow-sm"
+              className="group flex flex-col justify-center items-center w-[140px] sm:w-[180px] md:w-[220px] h-[90px] sm:h-[110px] rounded-lg bg-white border border-border/60 overflow-hidden shrink-0 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <img
                 src={img}
                 alt={`Associate ${index}`}
-                className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-contain p-4 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
               />
             </div>
           ))}

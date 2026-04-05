@@ -86,10 +86,10 @@ const HeroSection = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-background">
-      {/* Sliding Images */}
+    <section className="relative h-screen w-full overflow-hidden bg-foreground">
+      {/* Sliding Images with Ken Burns zoom effect */}
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
-        <motion.img
+        <motion.div
           key={current}
           custom={direction}
           variants={slideVariants}
@@ -97,19 +97,37 @@ const HeroSection = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          src={slide.image}
-          className="absolute inset-0 h-full w-full object-cover object-[40%_top] md:object-top"
-          alt="Hero background"
-        />
+          className="absolute inset-0 h-full w-full"
+        >
+          <img
+            src={slide.image}
+            className="absolute inset-0 h-full w-full object-cover object-[40%_top] md:object-top"
+            alt="Hero background"
+            style={{ animation: `kenBurns ${SLIDE_DURATION}ms ease-out forwards` }}
+          />
+        </motion.div>
       </AnimatePresence>
 
-      {/* Gradient overlays to darken background for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 via-40% to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 md:from-black/30 md:via-transparent to-transparent pointer-events-none" />
+      {/* Stronger gradient overlays for corporate feel */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 via-45% to-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 md:from-black/40 md:via-transparent to-transparent pointer-events-none" />
 
       {/* Text content */}
       <div className="absolute inset-0 flex items-center">
         <div className="mx-auto w-full max-w-7xl px-8 md:px-12 md:max-w-[55%] md:ml-[4%] md:mr-auto">
+          {/* Established badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-6"
+          >
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-white/60 font-medium border border-white/15 px-4 py-1.5 rounded-sm backdrop-blur-sm bg-white/[0.04]">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+              Established 1978
+            </span>
+          </motion.div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -121,7 +139,7 @@ const HeroSection = () => {
               <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-white">
                 {slide.headline}
               </h1>
-              <p className="mt-5 sm:mt-8 max-w-md font-body text-base sm:text-lg font-light tracking-wide text-white/80 leading-relaxed">
+              <p className="mt-5 sm:mt-8 max-w-md font-body text-base sm:text-lg font-light tracking-wide text-white/75 leading-relaxed">
                 {slide.subtext}
               </p>
             </motion.div>
@@ -133,8 +151,12 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-8 sm:mt-10 flex gap-4"
           >
-            <Link to={slide.link} className="bg-primary text-primary-foreground px-8 py-4 rounded-sm font-semibold tracking-wide hover:opacity-90 transition-elegant text-center">
+            <Link
+              to={slide.link}
+              className="group bg-white text-foreground px-8 py-4 rounded-md text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
+            >
               {slide.cta}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </motion.div>
         </div>
@@ -143,21 +165,21 @@ const HeroSection = () => {
       {/* Navigation arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 glass-light text-white hover:bg-white/20 transition-elegant"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} strokeWidth={1.5} />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 glass-light text-white hover:bg-white/20 transition-elegant"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
         aria-label="Next slide"
       >
         <ChevronRight size={20} strokeWidth={1.5} />
       </button>
 
       {/* Dot indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -166,9 +188,9 @@ const HeroSection = () => {
             className="group relative flex items-center justify-center"
           >
             <span
-              className={`block h-2 rounded-full transition-all transition-elegant duration-500 ${i === current
-                ? "w-8 bg-white"
-                : "w-2 bg-white/40 group-hover:bg-white/70"
+              className={`block h-[3px] rounded-full transition-all transition-elegant duration-500 ${i === current
+                ? "w-10 bg-white"
+                : "w-3 bg-white/30 group-hover:bg-white/60"
                 }`}
             />
           </button>
@@ -182,7 +204,7 @@ const HeroSection = () => {
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
-          className="h-full bg-white/60"
+          className="h-full bg-white/50"
         />
       </div>
     </section>
