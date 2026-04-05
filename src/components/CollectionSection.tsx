@@ -223,7 +223,7 @@ const CollectionSlide = ({
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </button>
         <a
-          href={`/contact?category=${slide.id}`}
+          href={`/category/${slide.id}`}
           className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-medium hover:text-foreground transition-elegant underline-offset-4 hover:underline"
         >
           View All

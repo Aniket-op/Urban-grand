@@ -12,6 +12,7 @@ import Contact from "./pages/Contact.tsx";
 import OurVision from "./pages/OurVision.tsx";
 import OurStory from "./pages/OurStory.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import CategoryPage from "./pages/CategoryPage.tsx";
 
 import FAQ from "./pages/FAQ.tsx";
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/vision" element={<OurVision />} />
           <Route path="/story" element={<OurStory />} />
+          <Route path="/category/:gender" element={<CategoryPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
