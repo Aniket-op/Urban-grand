@@ -41,7 +41,7 @@ const categoryData: Record<string, CategoryData> = {
   men: {
     title: "Men's Collection",
     tagline: "Bold & Refined — Premium Knitwear for the Modern Man",
-    accent: "from-slate-900 to-blue-950",
+    accent: "from-[hsl(220,25%,10%)] to-[hsl(220,30%,18%)]",
     products: [
       { image: menJacket1, subcategory: "Jackets" },
       { image: menJacket2, subcategory: "Jackets" },
@@ -54,7 +54,7 @@ const categoryData: Record<string, CategoryData> = {
   women: {
     title: "Women's Collection",
     tagline: "Feminine Elegance — Timeless Silhouettes in Premium Knitwear",
-    accent: "from-stone-900 to-rose-950",
+    accent: "from-[hsl(220,20%,10%)] to-[hsl(340,15%,18%)]",
     products: [
       { image: womenJacket1, subcategory: "Jackets" },
       { image: womenJacket2, subcategory: "Jackets" },
@@ -65,7 +65,7 @@ const categoryData: Record<string, CategoryData> = {
   kids: {
     title: "Kids' Collection",
     tagline: "Playful & Cozy — High-Quality Clothing for Little Adventurers",
-    accent: "from-stone-900 to-amber-950",
+    accent: "from-[hsl(220,20%,10%)] to-[hsl(38,15%,18%)]",
     products: [
       { image: kidsJacket1, subcategory: "Jackets" },
       { image: kidsJacket2, subcategory: "Jackets" },
@@ -87,7 +87,7 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: (index % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative overflow-hidden rounded-sm bg-soft"
+      className="group relative overflow-hidden rounded-lg bg-section-alt corporate-card"
     >
       {/* Image */}
       <div className="aspect-[3/4] overflow-hidden">
@@ -100,7 +100,7 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
 
       {/* Subcategory badge — only label, no price */}
       <div className="absolute top-3 left-3">
-        <span className="bg-black/75 backdrop-blur-sm text-white text-[10px] font-semibold tracking-[0.15em] uppercase px-2.5 py-1 rounded-[2px]">
+        <span className="bg-[hsl(220,25%,12%)]/85 dark:bg-white/15 backdrop-blur-sm text-white text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1 rounded-md">
           {product.subcategory}
         </span>
       </div>
@@ -126,7 +126,7 @@ const CategoryPage = () => {
       <Navbar />
 
       {/* ── Hero banner */}
-      <div className={`background ${data.accent} text-white px-6 py-16 md:py-20 text-center`}>
+      <div className={`bg-gradient-to-br ${data.accent} text-white px-6 py-20 md:py-24 text-center`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -138,6 +138,7 @@ const CategoryPage = () => {
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             {data.title}
           </h1>
+          <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mt-5 mx-auto" />
           <p className="mt-4 max-w-xl mx-auto text-sm opacity-60 leading-relaxed">
             {data.tagline}
           </p>
@@ -145,13 +146,13 @@ const CategoryPage = () => {
       </div>
 
       {/* ── Category tabs (switch between men/women/kids) */}
-      <div className="sticky top-20 z-40 bg-background/90 backdrop-blur-md border-b border-border/40 shadow-sm">
+      <div className="sticky top-20 z-40 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 flex items-center gap-1 h-12 overflow-x-auto">
           {Object.entries(categoryData).map(([key, cat]) => (
             <Link
               key={key}
               to={`/category/${key}`}
-              className={`px-5 py-1.5 text-[11px] font-semibold tracking-[0.15em] uppercase rounded-full transition-all whitespace-nowrap ${key === gender
+              className={`px-5 py-1.5 text-[11px] font-semibold tracking-[0.15em] uppercase rounded-md transition-all whitespace-nowrap ${key === gender
                 ? "bg-foreground text-background"
                 : "text-muted-medium hover:text-foreground"
                 }`}
@@ -179,7 +180,7 @@ const CategoryPage = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
           {data.products.map((product, i) => (
             <ProductCard key={i} product={product} index={i} />
           ))}
@@ -195,7 +196,7 @@ const CategoryPage = () => {
           </h2>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-all rounded-sm"
+            className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-all rounded-md"
           >
             Enquire Now →
           </Link>

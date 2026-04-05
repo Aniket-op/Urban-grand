@@ -1,190 +1,125 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroSlide1 from "@/assets/hero-slide-1.jpg";
-import heroSlide2 from "@/assets/Men-1.jpg";
-import heroSlide3 from "@/assets/women-1.avif";
-import home1 from "@/assets/kids-1.webp";
-
-const slides = [
-  {
-    image: heroSlide1,
-    headline: <>Premium Line by<br /><span className="italic font-normal">Panchsheel Knitwears</span></>,
-    subtext: <>UrbanGrand combines modern style with trusted craftsmanship,<br />delivering elegance, comfort, and lasting quality.</>,
-    cta: "Our Vision",
-    link: "/about/category/mission-vision",
-  },
-  {
-    image: heroSlide2,
-    headline: <>Explore<br /><span className="italic font-normal">Men's Collection</span></>,
-    subtext: <>Discover our exclusive range of jackets, coats,<br />sweatshirts, and more for the modern man.</>,
-    cta: "Shop Men",
-    link: "/contact?category=men",
-  },
-  {
-    image: heroSlide3,
-    headline: <>Elegant<br /><span className="italic font-normal">Women's Wear</span></>,
-    subtext: <>Chic and comfortable cardigans, hoodies,<br />and jackets designed to elevate your style.</>,
-    cta: "Shop Women",
-    link: "/contact?category=women",
-  },
-  {
-    image: home1,
-    headline: <>Trendy<br /><span className="italic font-normal">Kids Fashion</span></>,
-    subtext: <>Playful, cozy, and high-quality clothing perfect<br />for your little ones' everyday adventures.</>,
-    cta: "Shop Kids",
-    link: "/contact?category=kids",
-  },
-];
-
-const SLIDE_DURATION = 8000;
+import heroVideo from "@/assets/video/hero_video.mp4";
 
 const HeroSection = () => {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
 
-  const goTo = useCallback(
-    (index: number) => {
-      setDirection(index > current ? 1 : -1);
-      setCurrent(index);
-    },
-    [current]
-  );
-
-  const next = useCallback(() => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % slides.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
-
-  // Auto-advance by timer
+  // Ensure autoplay works (browsers require muted for autoplay)
   useEffect(() => {
-    const timer = setInterval(next, SLIDE_DURATION);
-    return () => clearInterval(timer);
-  }, [next]);
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.play().catch(() => { });
+    }
+  }, []);
 
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir: number) => ({
-      x: dir > 0 ? "-100%" : "100%",
-      opacity: 0,
-    }),
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = !video.muted;
+      setMuted(video.muted);
+    }
   };
 
-  const slide = slides[current];
-
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-background">
-      {/* Sliding Images */}
-      <AnimatePresence initial={false} custom={direction} mode="popLayout">
-        <motion.img
-          key={current}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          src={slide.image}
-          className="absolute inset-0 h-full w-full object-cover object-[40%_top] md:object-top"
-          alt="Hero background"
-        />
-      </AnimatePresence>
+    <section className="relative h-screen w-full overflow-hidden bg-[hsl(220,25%,8%)]">
+      {/* Background Video */}
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-cover"
+        src={heroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+      />
 
-      {/* Gradient overlays to darken background for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 via-40% to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 md:from-black/30 md:via-transparent to-transparent pointer-events-none" />
+      {/* Gradient overlays for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 via-50% to-black/15 sm:from-black/85 sm:via-black/50 sm:via-45% sm:to-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 sm:from-black/60 sm:via-transparent to-transparent pointer-events-none" />
 
       {/* Text content */}
       <div className="absolute inset-0 flex items-center">
-        <div className="mx-auto w-full max-w-7xl px-8 md:px-12 md:max-w-[55%] md:ml-[4%] md:mr-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-white">
-                {slide.headline}
-              </h1>
-              <p className="mt-5 sm:mt-8 max-w-md font-body text-base sm:text-lg font-light tracking-wide text-white/80 leading-relaxed">
-                {slide.subtext}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 md:px-12 md:max-w-[55%] md:ml-[4%] md:mr-auto">
+          {/* Established badge */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-5 sm:mb-6"
+          >
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-white/60 font-medium border border-white/15 px-3 sm:px-4 py-1.5 rounded-sm backdrop-blur-sm bg-white/[0.04]">
+              <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+              Established 1978
+            </span>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8 sm:mt-10 flex gap-4"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <Link to={slide.link} className="bg-primary text-primary-foreground px-8 py-4 rounded-sm font-semibold tracking-wide hover:opacity-90 transition-elegant text-center">
-              {slide.cta}
+            <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-[5.5rem] font-bold leading-[1] sm:leading-[0.95] tracking-[-0.02em] text-white">
+              Premium Line by
+              <br />
+              <span className="italic font-normal">Panchsheel Knitwears</span>
+            </h1>
+            <p className="mt-4 sm:mt-8 max-w-md font-body text-sm sm:text-base md:text-lg font-light tracking-wide text-white/70 leading-relaxed">
+              UrbanGrand combines modern style with trusted craftsmanship,
+              <br className="hidden sm:block" />
+              delivering elegance, comfort, and lasting quality.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            className="mt-7 sm:mt-10 flex items-center gap-4"
+          >
+            <Link
+              to="/about/category/mission-vision"
+              className="group bg-background text-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
+            >
+              Our Vision
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
+            <Link
+              to="/contact"
+              className="group px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-[11px] sm:text-[12px] font-semibold tracking-[0.15em] uppercase text-white border border-white/25 hover:bg-white/10 hover:border-white/40 transition-elegant text-center inline-flex items-center gap-2 backdrop-blur-sm"
+            >
+              Contact Us
             </Link>
           </motion.div>
         </div>
       </div>
 
-      {/* Navigation arrows */}
-      <button
-        onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 glass-light text-white hover:bg-white/20 transition-elegant"
-        aria-label="Previous slide"
+      {/* Mute / Unmute button */}
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+        onClick={toggleMute}
+        className="absolute bottom-8 right-5 sm:bottom-10 sm:right-8 z-10 flex items-center gap-2 px-4 py-2.5 rounded-md border border-white/15 bg-black/30 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/50 hover:border-white/25 transition-all duration-300 group"
+        aria-label={muted ? "Unmute video" : "Mute video"}
       >
-        <ChevronLeft size={20} strokeWidth={1.5} />
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 glass-light text-white hover:bg-white/20 transition-elegant"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={20} strokeWidth={1.5} />
-      </button>
+        {muted ? (
+          <VolumeX size={18} className="group-hover:scale-110 transition-transform" />
+        ) : (
+          <Volume2 size={18} className="group-hover:scale-110 transition-transform" />
+        )}
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] font-medium hidden sm:inline">
+          {muted ? "Unmute" : "Mute"}
+        </span>
+      </motion.button>
 
-      {/* Dot indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            className="group relative flex items-center justify-center"
-          >
-            <span
-              className={`block h-2 rounded-full transition-all transition-elegant duration-500 ${i === current
-                ? "w-8 bg-white"
-                : "w-2 bg-white/40 group-hover:bg-white/70"
-                }`}
-            />
-          </button>
-        ))}
-      </div>
-
-      {/* Progress bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/10 z-10">
-        <motion.div
-          key={current}
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: SLIDE_DURATION / 1000, ease: "linear" }}
-          className="h-full bg-white/60"
-        />
-      </div>
+      {/* Bottom gradient fade for smooth section transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 };
