@@ -99,35 +99,13 @@ const Navbar = () => {
 
   return (
     <>
-      {/* ── TOP INFO BAR ─────────────────────────────────────────────── */}
-      <div className={`fixed top-0 w-full z-[51] transition-all duration-500 ${
-        scrolled
-          ? "h-0 opacity-0 overflow-hidden"
-          : "h-9 opacity-100"
-      }`}>
-        <div className="h-full bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,10%)] dark:border-b dark:border-white/5 text-white/80 flex items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] tracking-wide font-medium px-4">
-          <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center gap-1.5 hover:text-white transition-colors">
-            <Mail size={12} />
-            <span className="hidden sm:inline">URBANGRAND78@GMAIL.COM</span>
-          </a>
-          <span className="hidden sm:inline text-white/20">|</span>
-          <a href="tel:+917696880871" className="flex items-center gap-1.5 hover:text-white transition-colors">
-            <Phone size={12} />
-            <span>(+91) 76968-80871</span>
-          </a>
-          <span className="hidden md:inline text-white/20">|</span>
-          <span className="hidden md:inline text-white/60">Trusted Craftsmanship Since 1978</span>
-        </div>
-      </div>
-
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
       <nav
         ref={navRef}
-        className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          scrolled
-            ? "top-0 glass-corporate border-b border-border/40"
-            : "top-9 bg-transparent border-transparent"
-        }`}
+        className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)] ${scrolled
+          ? "top-0 glass-corporate border-b border-border/40"
+          : "top-9 bg-transparent border-transparent"
+          }`}
       >
         {/*
           Logo slides from center → left.
@@ -138,13 +116,12 @@ const Navbar = () => {
         <Link
           ref={logoRef}
           to="/"
-          className="flex items-center gap-2.5 sm:gap-3 group z-10 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="flex items-center gap-2.5 sm:gap-3 group z-10 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)]"
           style={{
             transform: scrolled
               ? "translateX(0)"
-              : `translateX(calc(50vw - 50% - ${
-                  typeof window !== "undefined" && window.innerWidth < 640 ? "16px" : "48px"
-                }))`,
+              : `translateX(calc(50vw - 50% - ${typeof window !== "undefined" && window.innerWidth < 640 ? "16px" : "48px"
+              }))`,
           }}
         >
           <img
@@ -159,9 +136,8 @@ const Navbar = () => {
 
         {/* Desktop nav links — fade in when scrolled */}
         <div
-          className={`hidden md:flex gap-4 lg:gap-7 items-center h-full ml-auto transition-all duration-500 ${
-            scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
-          }`}
+          className={`hidden md:flex gap-4 lg:gap-7 items-center h-full ml-auto transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+            }`}
         >
           {menuItems.map((item) => {
             if (item.to) {
@@ -170,15 +146,13 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={`text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group whitespace-nowrap ${
-                    active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
-                  }`}
+                  className={`text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group whitespace-nowrap ${active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+                    }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${
-                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}
+                    className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
                   />
                 </Link>
               );
@@ -220,9 +194,8 @@ const Navbar = () => {
 
         {/* Desktop right actions — fade in when scrolled */}
         <div
-          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-4 lg:ml-6 transition-all duration-500 ${
-            scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
-          }`}
+          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-4 lg:ml-6 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+            }`}
         >
           {/* Language Dropdown */}
           <div
@@ -240,19 +213,17 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${
-                langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
-              }`}
+              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+                }`}
             >
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
-                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${
-                    currentLang.code === lang.code
-                      ? "text-foreground font-semibold bg-muted/50"
-                      : "text-muted-medium hover:text-foreground hover:bg-muted/30"
-                  }`}
+                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
+                    ? "text-foreground font-semibold bg-muted/50"
+                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"
+                    }`}
                 >
                   <span className="text-base">{lang.flag}</span>
                   {lang.label}
@@ -283,11 +254,10 @@ const Navbar = () => {
 
         {/* Mobile hamburger — always visible on mobile, but only when scrolled on hero page */}
         <button
-          className={`md:hidden p-2 rounded-lg hover:bg-white/10 ml-auto z-10 transition-all duration-500 ${
-            scrolled
-              ? "opacity-100 pointer-events-auto text-foreground hover:bg-muted/50"
-              : "opacity-100 pointer-events-auto text-white"
-          }`}
+          className={`md:hidden p-2 rounded-lg hover:bg-white/10 ml-auto z-10 transition-all duration-500 ${scrolled
+            ? "opacity-100 pointer-events-auto text-foreground hover:bg-muted/50"
+            : "opacity-100 pointer-events-auto text-white"
+            }`}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -296,11 +266,10 @@ const Navbar = () => {
 
         {/* ── MOBILE FULLSCREEN MENU ──────────────────────────────────── */}
         <div
-          className={`fixed inset-0 top-0 left-0 w-full h-full bg-background/[0.98] dark:bg-background/[0.99] backdrop-blur-xl z-[60] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
-            mobileOpen
-              ? "opacity-100 pointer-events-auto translate-x-0"
-              : "opacity-0 pointer-events-none translate-x-full"
-          }`}
+          className={`fixed inset-0 top-0 left-0 w-full h-full bg-background/[0.98] dark:bg-background/[0.99] backdrop-blur-xl z-[60] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22_1_0.36_1)] md:hidden ${mobileOpen
+            ? "opacity-100 pointer-events-auto translate-x-0"
+            : "opacity-0 pointer-events-none translate-x-full"
+            }`}
         >
           {/* Mobile header */}
           <div className="flex items-center justify-between px-5 h-[72px] border-b border-border/30 flex-shrink-0">
@@ -388,11 +357,10 @@ const Navbar = () => {
                   <button
                     key={lang.code}
                     onClick={() => setCurrentLang(lang)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${
-                      currentLang.code === lang.code
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-border text-muted-medium hover:border-foreground/50"
-                    }`}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${currentLang.code === lang.code
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border text-muted-medium hover:border-foreground/50"
+                      }`}
                   >
                     <span>{lang.flag}</span>
                     {lang.label}
