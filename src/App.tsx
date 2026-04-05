@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound.tsx";
 import CategoryPage from "./pages/CategoryPage.tsx";
 
 import FAQ from "./pages/FAQ.tsx";
+import MapPage from "./pages/MapPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/vision" element={<OurVision />} />
           <Route path="/story" element={<OurStory />} />
           <Route path="/category/:gender" element={<CategoryPage />} />
+          <Route path="/map" element={<MapPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

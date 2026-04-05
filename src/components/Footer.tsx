@@ -13,7 +13,6 @@ const platformLinks = [
   { label: "Men", to: "/contact?category=men" },
   { label: "Women", to: "/contact?category=women" },
   { label: "Kids", to: "/contact?category=kids" },
-  { label: "Accessories", to: "/contact?category=accessories" },
 ];
 
 const Footer = () => {
@@ -31,7 +30,7 @@ const Footer = () => {
               <img src={logoUrl} alt="UrbanGrand Logo" className="h-14 w-auto rounded-md bg-white p-1.5" />
             </Link>
             <div className="space-y-1">
-              <p className="font-heading text-xl font-bold text-white tracking-wide">UrbanGrand</p>
+              <p className="font-heading text-xl font-bold text-white tracking-wide">URBAN GRAND</p>
               <p className="text-[13px] text-zinc-400 leading-relaxed">Premium knitwear by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
             </div>
             {/* Social Icons */}
@@ -101,10 +100,10 @@ const Footer = () => {
                   </div>
                 </li>
                 <li className="pt-1">
-                  <a href="https://maps.app.goo.gl/QQFf4Q21gVMyjt8F8" target="_blank" rel="noopener noreferrer" className="flex items-start text-zinc-400 hover:text-white transition-colors">
+                  <Link to="/map" className="flex items-start text-zinc-400 hover:text-white transition-colors">
                     <MapPin size={15} className="text-zinc-500 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="leading-relaxed">213/15-C, NEW KUNDAN PURI,<br />CIVIL LINES, LUDHIANA-141001 PUNJAB</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
