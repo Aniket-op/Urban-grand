@@ -86,7 +86,7 @@ const HeroSection = () => {
   const slide = slides[current];
 
   return (
-    <section className="relative h-[calc(100vh-80px)] w-full overflow-hidden bg-background">
+    <section className="relative h-screen w-full overflow-hidden bg-background">
       {/* Sliding Images */}
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.img

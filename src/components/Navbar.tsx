@@ -93,7 +93,7 @@ const Navbar = () => {
   return (
     <>
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
-      <nav className={`h-20 flex items-center justify-between px-5 lg:px-12 sticky top-0 z-50 relative transition-all duration-500 ${scrolled ? "glass-light subtle-border" : "bg-transparent border-transparent"}`}>
+      <nav className={`h-20 flex items-center justify-between px-5 lg:px-12 fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? "glass-light subtle-border" : "bg-transparent border-transparent"}`}>
         {/* Logo — centered when at hero top, left-aligned when scrolled */}
         <Link
           to="/"
@@ -107,7 +107,7 @@ const Navbar = () => {
             alt="Urban Grand Logo"
             className="h-[48px] w-[48px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105 "
           />
-          <span className="font-display text-[22px] font-semibold tracking-wide leading-none">
+          <span className={`font-display text-[22px] font-semibold tracking-wide leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
             URBAN GRAND
           </span>
         </Link>

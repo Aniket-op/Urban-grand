@@ -32,7 +32,7 @@ const images = [heroSlide1, heroSlide2, heroSlide3];
 
 const OurVision = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
 
       {/* Full-screen cinematic hero */}

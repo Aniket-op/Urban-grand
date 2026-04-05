@@ -39,7 +39,7 @@ const milestones = [
 
 const OurStory = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
 
       {/* Hero */}

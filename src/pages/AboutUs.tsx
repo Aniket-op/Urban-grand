@@ -26,7 +26,7 @@ At Panchsheel Knitwears, our manufacturing philosophy is rooted in precision, du
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
 
       {/* Hero banner */}

@@ -23,7 +23,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
       
       <main className="flex-1 w-full max-w-4xl mx-auto px-6 py-16 md:py-24 space-y-12">
