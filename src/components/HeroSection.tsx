@@ -109,12 +109,12 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Stronger gradient overlays for corporate feel */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 via-45% to-black/10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 md:from-black/40 md:via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 via-50% to-black/20 sm:from-black/85 sm:via-black/55 sm:via-45% sm:to-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 sm:from-black/70 sm:via-black/25 md:from-black/40 md:via-transparent to-transparent pointer-events-none" />
 
       {/* Text content */}
       <div className="absolute inset-0 flex items-center">
-        <div className="mx-auto w-full max-w-7xl px-8 md:px-12 md:max-w-[55%] md:ml-[4%] md:mr-auto">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 md:px-12 md:max-w-[55%] md:ml-[4%] md:mr-auto">
           {/* Established badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -136,10 +136,10 @@ const HeroSection = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-[-0.02em] text-white">
+              <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-[5.5rem] font-bold leading-[1] sm:leading-[0.95] tracking-[-0.02em] text-white">
                 {slide.headline}
               </h1>
-              <p className="mt-5 sm:mt-8 max-w-md font-body text-base sm:text-lg font-light tracking-wide text-white/75 leading-relaxed">
+              <p className="mt-4 sm:mt-8 max-w-md font-body text-sm sm:text-base md:text-lg font-light tracking-wide text-white/75 leading-relaxed">
                 {slide.subtext}
               </p>
             </motion.div>
@@ -153,7 +153,7 @@ const HeroSection = () => {
           >
             <Link
               to={slide.link}
-              className="group bg-white text-foreground px-8 py-4 rounded-md text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
+              className="group bg-white text-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-md text-[11px] sm:text-[12px] font-bold tracking-[0.15em] uppercase hover:bg-white/90 transition-elegant text-center inline-flex items-center gap-2"
             >
               {slide.cta}
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -165,14 +165,14 @@ const HeroSection = () => {
       {/* Navigation arrows */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
+        className="absolute left-3 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 hidden sm:flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} strokeWidth={1.5} />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
+        className="absolute right-3 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 hidden sm:flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-md border border-white/15 bg-white/[0.06] backdrop-blur-sm text-white hover:bg-white/15 transition-elegant"
         aria-label="Next slide"
       >
         <ChevronRight size={20} strokeWidth={1.5} />

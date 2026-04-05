@@ -100,7 +100,7 @@ const ProductCard = ({ product, index }: { product: Product; index: number }) =>
 
       {/* Subcategory badge — only label, no price */}
       <div className="absolute top-3 left-3">
-        <span className="bg-[hsl(220,25%,12%)]/85 backdrop-blur-sm text-white text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1 rounded-md">
+        <span className="bg-[hsl(220,25%,12%)]/85 dark:bg-white/15 backdrop-blur-sm text-white text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1 rounded-md">
           {product.subcategory}
         </span>
       </div>

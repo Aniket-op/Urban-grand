@@ -1,5 +1,5 @@
 import { ChevronDown, Menu, X, Sun, Moon, Globe, Monitor, LogIn, Mail, Phone } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoUrl from "@/assets/urbangrant.jpeg";
 import brochurePdf from "@/assets/PANCHSHEEL-PROFILE-LATEST.pdf";
@@ -50,12 +50,14 @@ const Navbar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
 
   // Detect scroll to toggle hero/scrolled state
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // run once on mount
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -90,6 +92,11 @@ const Navbar = () => {
   const [langOpen, setLangOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(languages[0]);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
       {/* ── TOP INFO BAR ─────────────────────────────────────────────── */}
@@ -98,7 +105,7 @@ const Navbar = () => {
           ? "h-0 opacity-0 overflow-hidden"
           : "h-9 opacity-100"
       }`}>
-        <div className="h-full bg-[hsl(220,25%,12%)] text-white/80 flex items-center justify-center gap-8 text-[11px] tracking-wide font-medium">
+        <div className="h-full bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,10%)] dark:border-b dark:border-white/5 text-white/80 flex items-center justify-center gap-4 sm:gap-8 text-[10px] sm:text-[11px] tracking-wide font-medium px-4">
           <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center gap-1.5 hover:text-white transition-colors">
             <Mail size={12} />
             <span className="hidden sm:inline">URBANGRAND78@GMAIL.COM</span>
@@ -114,33 +121,47 @@ const Navbar = () => {
       </div>
 
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
-      <nav className={`h-[72px] flex items-center justify-between px-5 lg:px-12 fixed w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "top-0 glass-corporate border-b border-border/40"
-          : "top-9 bg-transparent border-transparent"
-      }`}>
-        {/* Logo — centered when at hero top, left-aligned when scrolled */}
+      <nav
+        ref={navRef}
+        className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          scrolled
+            ? "top-0 glass-corporate border-b border-border/40"
+            : "top-9 bg-transparent border-transparent"
+        }`}
+      >
+        {/*
+          Logo slides from center → left.
+          We use a wrapper that occupies the full navbar width,
+          then translate the logo to center when NOT scrolled.
+          When scrolled, it returns to its natural left position.
+        */}
         <Link
+          ref={logoRef}
           to="/"
-          className={`flex items-center gap-3 group transition-all duration-500 ${!scrolled
-            ? "absolute left-1/2 -translate-x-1/2"
-            : "relative translate-x-0"
-            }`}
+          className="flex items-center gap-2.5 sm:gap-3 group z-10 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{
+            transform: scrolled
+              ? "translateX(0)"
+              : `translateX(calc(50vw - 50% - ${
+                  typeof window !== "undefined" && window.innerWidth < 640 ? "16px" : "48px"
+                }))`,
+          }}
         >
           <img
             src={logoUrl}
             alt="Urban Grand Logo"
-            className="h-[44px] w-[44px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105 "
+            className="h-10 w-10 sm:h-[44px] sm:w-[44px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105"
           />
-          <span className={`font-heading text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
+          <span className={`font-heading text-[17px] sm:text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
             URBAN GRAND
           </span>
         </Link>
 
-        {/* Desktop nav links — hidden on hero top */}
+        {/* Desktop nav links — fade in when scrolled */}
         <div
-          className={`hidden md:flex gap-5 lg:gap-7 items-center h-full transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
+          className={`hidden md:flex gap-4 lg:gap-7 items-center h-full ml-auto transition-all duration-500 ${
+            scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+          }`}
         >
           {menuItems.map((item) => {
             if (item.to) {
@@ -149,13 +170,15 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={`text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group ${active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
-                    }`}
+                  className={`text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group whitespace-nowrap ${
+                    active ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+                  }`}
                 >
                   {item.label}
                   <span
-                    className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                      }`}
+                    className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${
+                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
                   />
                 </Link>
               );
@@ -163,7 +186,7 @@ const Navbar = () => {
 
             return (
               <div key={item.label} className="relative group h-full flex items-center">
-                <button className="flex items-center gap-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-foreground/70 hover:text-foreground transition-elegant">
+                <button className="flex items-center gap-1 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.12em] text-foreground/70 hover:text-foreground transition-elegant whitespace-nowrap">
                   {item.label}
                   <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                 </button>
@@ -195,10 +218,11 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* Desktop right actions — hidden on hero top */}
+        {/* Desktop right actions — fade in when scrolled */}
         <div
-          className={`hidden md:flex items-center gap-3 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
+          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-4 lg:ml-6 transition-all duration-500 ${
+            scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+          }`}
         >
           {/* Language Dropdown */}
           <div
@@ -216,17 +240,19 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
-                }`}
+              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${
+                langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+              }`}
             >
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
-                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
-                    ? "text-foreground font-semibold bg-muted/50"
-                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"
-                    }`}
+                  className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${
+                    currentLang.code === lang.code
+                      ? "text-foreground font-semibold bg-muted/50"
+                      : "text-muted-medium hover:text-foreground hover:bg-muted/30"
+                  }`}
                 >
                   <span className="text-base">{lang.flag}</span>
                   {lang.label}
@@ -248,26 +274,51 @@ const Navbar = () => {
           {/* Login Button */}
           <button
             onClick={() => setLoginOpen(true)}
-            className="flex items-center gap-2 px-5 py-2 rounded-md border border-foreground/20 text-[11px] font-semibold tracking-[0.1em] uppercase text-foreground/70 hover:text-foreground hover:border-foreground/40 hover:bg-muted/30 transition-elegant"
+            className="flex items-center gap-2 px-4 lg:px-5 py-2 rounded-md border border-foreground/20 text-[11px] font-semibold tracking-[0.1em] uppercase text-foreground/70 hover:text-foreground hover:border-foreground/40 hover:bg-muted/30 transition-elegant"
           >
             <LogIn size={13} />
-            Login
+            <span className="hidden lg:inline">Login</span>
           </button>
         </div>
 
-        {/* Mobile hamburger — hidden on hero top */}
+        {/* Mobile hamburger — always visible on mobile, but only when scrolled on hero page */}
         <button
-          className={`md:hidden p-2 rounded-lg hover:bg-muted/50 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
+          className={`md:hidden p-2 rounded-lg hover:bg-white/10 ml-auto z-10 transition-all duration-500 ${
+            scrolled
+              ? "opacity-100 pointer-events-auto text-foreground hover:bg-muted/50"
+              : "opacity-100 pointer-events-auto text-white"
+          }`}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Mobile dropdown */}
-        {mobileOpen && (
-          <div className="absolute top-[72px] left-0 right-0 h-[calc(100vh-72px)] overflow-y-auto bg-background/98 backdrop-blur-xl border-t border-border/40 flex flex-col pt-4 pb-12 md:hidden shadow-lg z-50">
+        {/* ── MOBILE FULLSCREEN MENU ──────────────────────────────────── */}
+        <div
+          className={`fixed inset-0 top-0 left-0 w-full h-full bg-background/[0.98] dark:bg-background/[0.99] backdrop-blur-xl z-[60] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:hidden ${
+            mobileOpen
+              ? "opacity-100 pointer-events-auto translate-x-0"
+              : "opacity-0 pointer-events-none translate-x-full"
+          }`}
+        >
+          {/* Mobile header */}
+          <div className="flex items-center justify-between px-5 h-[72px] border-b border-border/30 flex-shrink-0">
+            <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
+              <img src={logoUrl} alt="Urban Grand Logo" className="h-9 w-9 rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-0.5" />
+              <span className="font-heading text-[17px] font-bold tracking-[0.08em]">URBAN GRAND</span>
+            </Link>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              aria-label="Close menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Mobile nav links */}
+          <div className="flex-1 overflow-y-auto py-4">
             {menuItems.map((item) => {
               if (item.to) {
                 return (
@@ -275,7 +326,7 @@ const Navbar = () => {
                     key={item.label}
                     to={item.to}
                     onClick={() => setMobileOpen(false)}
-                    className="px-6 py-4 text-[14px] font-semibold uppercase tracking-[0.1em] text-foreground/80 hover:text-foreground hover:bg-muted/30 transition-colors border-b border-border/30"
+                    className="flex items-center px-6 py-4 text-[15px] font-semibold uppercase tracking-[0.08em] text-foreground/80 hover:text-foreground hover:bg-muted/20 transition-colors border-b border-border/20"
                   >
                     {item.label}
                   </Link>
@@ -284,10 +335,10 @@ const Navbar = () => {
 
               const isExpanded = mobileExpanded === item.label;
               return (
-                <div key={item.label} className="border-b border-border/30">
+                <div key={item.label} className="border-b border-border/20">
                   <button
                     onClick={() => setMobileExpanded(isExpanded ? null : item.label)}
-                    className="w-full flex items-center justify-between px-6 py-4 text-[14px] font-semibold uppercase tracking-[0.1em] text-foreground/80 hover:text-foreground transition-colors"
+                    className="w-full flex items-center justify-between px-6 py-4 text-[15px] font-semibold uppercase tracking-[0.08em] text-foreground/80 hover:text-foreground transition-colors"
                   >
                     {item.label}
                     <ChevronDown
@@ -296,10 +347,8 @@ const Navbar = () => {
                     />
                   </button>
 
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-96" : "max-h-0"}`}
-                  >
-                    <div className="bg-muted/20 py-2">
+                  <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-96" : "max-h-0"}`}>
+                    <div className="bg-muted/10 py-1">
                       {item.subcategories.map((sub) =>
                         sub.download ? (
                           <a
@@ -307,7 +356,7 @@ const Navbar = () => {
                             href={sub.to}
                             download="PANCHSHEEL_BROCHURE.pdf"
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-muted/30 transition-colors"
+                            className="block px-8 py-3.5 text-[14px] text-muted-medium hover:text-foreground hover:bg-muted/20 transition-colors"
                           >
                             {sub.label}
                           </a>
@@ -316,7 +365,7 @@ const Navbar = () => {
                             key={sub.label}
                             to={sub.to}
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3 text-sm text-muted-medium hover:text-foreground hover:bg-muted/30 transition-colors"
+                            className="block px-8 py-3.5 text-[14px] text-muted-medium hover:text-foreground hover:bg-muted/20 transition-colors"
                           >
                             {sub.label}
                           </Link>
@@ -327,53 +376,55 @@ const Navbar = () => {
                 </div>
               );
             })}
+          </div>
 
-            {/* Mobile bottom: Language + Theme + Login */}
-            <div className="mt-auto px-6 pt-8 flex flex-col gap-6">
-              <div className="flex flex-col gap-3">
-                <span className="text-xs uppercase tracking-widest text-muted-soft font-semibold">Language</span>
-                <div className="flex gap-2 flex-wrap">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setCurrentLang(lang)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${currentLang.code === lang.code
+          {/* Mobile bottom: Language + Theme + Login */}
+          <div className="flex-shrink-0 px-6 py-6 border-t border-border/30 space-y-5">
+            {/* Language chips */}
+            <div>
+              <span className="text-[10px] uppercase tracking-widest text-muted-soft font-semibold block mb-3">Language</span>
+              <div className="flex gap-2 flex-wrap">
+                {languages.slice(0, 4).map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setCurrentLang(lang)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${
+                      currentLang.code === lang.code
                         ? "border-foreground bg-foreground text-background"
                         : "border-border text-muted-medium hover:border-foreground/50"
-                        }`}
-                    >
-                      <span>{lang.flag}</span>
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-6 border-t border-border/30">
-                <button
-                  onClick={toggleTheme}
-                  className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-elegant text-foreground/80 hover:text-foreground font-semibold text-sm"
-                >
-                  {theme === "light" ? (
-                    <><Moon size={18} /> Dark Mode</>
-                  ) : theme === "dark" ? (
-                    <><Monitor size={18} /> System Mode</>
-                  ) : (
-                    <><Sun size={18} /> Light Mode</>
-                  )}
-                </button>
-
-                <button
-                  onClick={() => { setLoginOpen(true); setMobileOpen(false); }}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-foreground text-background text-xs font-semibold tracking-wide hover:opacity-85 transition-elegant"
-                >
-                  <LogIn size={13} />
-                  Login
-                </button>
+                    }`}
+                  >
+                    <span>{lang.flag}</span>
+                    {lang.label}
+                  </button>
+                ))}
               </div>
             </div>
+
+            <div className="flex items-center justify-between">
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 p-2 rounded-md hover:bg-muted/50 transition-elegant text-foreground/80 hover:text-foreground font-semibold text-sm"
+              >
+                {theme === "light" ? (
+                  <><Moon size={18} /> Dark Mode</>
+                ) : theme === "dark" ? (
+                  <><Monitor size={18} /> System</>
+                ) : (
+                  <><Sun size={18} /> Light Mode</>
+                )}
+              </button>
+
+              <button
+                onClick={() => { setLoginOpen(true); setMobileOpen(false); }}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-foreground text-background text-xs font-semibold tracking-wide hover:opacity-85 transition-elegant"
+              >
+                <LogIn size={13} />
+                Login
+              </button>
+            </div>
           </div>
-        )}
+        </div>
       </nav>
 
       {/* ── LOGIN MODAL ──────────────────────────────────────────────────── */}
@@ -383,10 +434,10 @@ const Navbar = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[70]"
             onClick={() => setLoginOpen(false)}
           />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-full max-w-md bg-background border border-border/60 shadow-2xl rounded-lg p-10">
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-2rem)] max-w-md bg-background border border-border/60 shadow-2xl rounded-lg p-8 sm:p-10">
             <button
               onClick={() => setLoginOpen(false)}
-              className="absolute top-5 right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-muted-medium"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-muted-medium"
               aria-label="Close login"
             >
               <X size={18} />

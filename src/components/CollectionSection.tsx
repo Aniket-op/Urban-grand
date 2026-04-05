@@ -157,11 +157,11 @@ const CollectionSlideComponent = ({
       className="flex flex-col justify-center gap-7 flex-1 min-w-0"
     >
       {/* Content panel with subtle corporate card styling */}
-      <div className="p-6 md:p-8 lg:p-0">
+      <div className="p-4 sm:p-6 md:p-8 lg:p-0">
         <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
           {slide.tag}
         </p>
-        <h2 className="font-display text-4xl md:text-5xl lg:text-[3.2rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground">
           {slide.title}
         </h2>
         <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 my-5" />
@@ -175,12 +175,12 @@ const CollectionSlideComponent = ({
         <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground font-semibold mb-4">
           Browse by Category
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {slide.subcategories.map((sub, i) => (
             <button
               key={sub.label}
               onClick={() => handleSubClick(i)}
-              className={`relative px-5 py-2.5 text-[12px] font-semibold tracking-[0.1em] uppercase rounded-md border transition-all duration-250 ${i === activeSub
+              className={`relative px-4 sm:px-5 py-2 sm:py-2.5 text-[11px] sm:text-[12px] font-semibold tracking-[0.1em] uppercase rounded-md border transition-all duration-250 ${i === activeSub
                 ? "bg-foreground text-background border-foreground"
                 : "border-border text-muted-medium hover:border-foreground/40 hover:text-foreground"
                 }`}
@@ -198,7 +198,7 @@ const CollectionSlideComponent = ({
       </div>
 
       {/* Active subcategory label */}
-      <div className="px-6 md:px-8 lg:px-0">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSub}
@@ -219,10 +219,10 @@ const CollectionSlideComponent = ({
       </div>
 
       {/* CTA */}
-      <div className="flex items-center gap-5 pt-2 px-6 md:px-8 lg:px-0">
+      <div className="flex items-center gap-4 sm:gap-5 pt-2 px-4 sm:px-6 md:px-8 lg:px-0">
         <button
           onClick={() => onEnquire(slide.id)}
-          className="group inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-md"
+          className="group inline-flex items-center gap-2 sm:gap-3 bg-foreground text-background px-6 sm:px-8 py-3.5 sm:py-4 text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-md"
         >
           Enquire Now
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -238,11 +238,11 @@ const CollectionSlideComponent = ({
   );
 
   return (
-    <div ref={ref} className={`w-full py-20 md:py-28 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
-      <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16">
+    <div ref={ref} className={`w-full py-14 sm:py-20 md:py-28 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
         <div
           className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
-            } gap-12 md:gap-16 lg:gap-24 items-center`}
+            } gap-8 sm:gap-12 md:gap-16 lg:gap-24 items-center`}
         >
           {ContentCol}
           {ImageCol}
@@ -272,7 +272,7 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 py-20 md:py-28"
+          className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-16 py-14 sm:py-20 md:py-28"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}

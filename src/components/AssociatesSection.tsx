@@ -25,8 +25,8 @@ const AssociatesSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="w-full py-20 lg:py-28 bg-section-alt overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 lg:px-14">
+    <section ref={ref} className="w-full py-14 sm:py-20 lg:py-28 bg-section-alt overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-14">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ const AssociatesSection = () => {
           <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
             Trusted Partners
           </p>
-          <h2 className="text-center font-display text-3xl md:text-4xl lg:text-[2.8rem] font-bold uppercase tracking-[0.08em] text-foreground">
+          <h2 className="text-center font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.8rem] font-bold uppercase tracking-[0.06em] sm:tracking-[0.08em] text-foreground">
             Our Associates
           </h2>
           <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mt-5 mx-auto" />
@@ -63,7 +63,7 @@ const AssociatesSection = () => {
           {[...associateImages, ...associateImages].map((img, index) => (
             <div
               key={index}
-              className="group flex flex-col justify-center items-center w-[140px] sm:w-[180px] md:w-[220px] h-[90px] sm:h-[110px] rounded-lg bg-white border border-border/60 overflow-hidden shrink-0 shadow-sm hover:shadow-md transition-all duration-300"
+              className="group flex flex-col justify-center items-center w-[140px] sm:w-[180px] md:w-[220px] h-[90px] sm:h-[110px] rounded-lg bg-white dark:bg-zinc-800/80 border border-border/60 overflow-hidden shrink-0 shadow-sm hover:shadow-md transition-all duration-300"
             >
               <img
                 src={img}

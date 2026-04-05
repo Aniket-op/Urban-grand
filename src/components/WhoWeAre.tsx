@@ -11,9 +11,9 @@ const WhoWeAre = () => {
     <section
       ref={ref}
       id="who-we-are"
-      className="w-full py-28 md:py-40 bg-background overflow-hidden"
+      className="w-full py-16 sm:py-28 md:py-40 bg-background overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-8 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-24 items-center">
         {/* Left — Image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -35,9 +35,9 @@ const WhoWeAre = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -bottom-8 -right-6 md:-right-10 bg-[hsl(220,25%,12%)] text-white px-8 py-6 shadow-2xl rounded-lg"
+            className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 md:-right-10 bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,18%)] dark:border dark:border-white/10 text-white px-5 py-4 sm:px-8 sm:py-6 shadow-2xl rounded-lg"
           >
-            <span className="block text-3xl font-heading font-bold">25+</span>
+            <span className="block text-2xl sm:text-3xl font-heading font-bold">25+</span>
             <span className="block text-[10px] tracking-[0.25em] uppercase mt-1 opacity-60 font-medium">Years of Craft</span>
           </motion.div>
 
@@ -69,7 +69,7 @@ const WhoWeAre = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="font-display text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground mb-2"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.05] tracking-[-0.01em] text-foreground mb-2"
           >
             Who We Are
           </motion.h2>
@@ -88,7 +88,7 @@ const WhoWeAre = () => {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="space-y-5"
           >
-            <p className="text-base md:text-lg text-muted-medium leading-relaxed">
+            <p className="text-[15px] sm:text-base md:text-lg text-muted-medium leading-relaxed">
               Urban Grand is the premium fashion label of{" "}
               <span className="font-semibold text-foreground">Panchsheel Knitwears</span> — a legacy
               built over decades of precision craftsmanship and an unwavering commitment to quality.
