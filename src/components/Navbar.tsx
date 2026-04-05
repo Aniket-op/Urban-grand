@@ -12,15 +12,6 @@ type MenuItem =
 const menuItems: MenuItem[] = [
   { label: "Home Page", to: "/" },
   {
-    label: "Our Products",
-    slug: "products",
-    subcategories: [
-      { label: "Men", to: "/contact?category=men" },
-      { label: "Women", to: "/contact?category=women" },
-      { label: "Kids", to: "/contact?category=kids" },
-    ],
-  },
-  {
     label: "Discover Us",
     slug: "about",
     subcategories: [
@@ -29,6 +20,15 @@ const menuItems: MenuItem[] = [
       { label: "Our Leadership", to: "/about/category/our-leadership" },
       { label: "Company Credentials", to: "/about/category/company-credentials" },
       { label: "Brochure", to: brochurePdf, download: true },
+    ],
+  },
+  {
+    label: "Our Products",
+    slug: "products",
+    subcategories: [
+      { label: "Men", to: "/contact?category=men" },
+      { label: "Women", to: "/contact?category=women" },
+      { label: "Kids", to: "/contact?category=kids" },
     ],
   },
   { label: "Contact Us", to: "/contact" },
