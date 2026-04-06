@@ -63,8 +63,8 @@ const Navbar = () => {
 
   // Theme
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") return localStorage.getItem("theme") || "system";
-    return "system";
+    if (typeof window !== "undefined") return localStorage.getItem("theme") || "dark";
+    return "dark";
   });
 
   useEffect(() => {

@@ -243,7 +243,7 @@ const CollectionSlideComponent = ({
           href={`/category/${slide.id}`}
           className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-medium hover:text-foreground transition-elegant underline-offset-4 hover:underline"
         >
-          View All
+          For Images
         </a>
       </div>
     </motion.div>
