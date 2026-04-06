@@ -6,7 +6,7 @@ import infra1 from "@/assets/infra1.png";
 import infra2 from "@/assets/infra2.png";
 import infra3 from "@/assets/infra3.png";
 import kidaxLogo from "@/assets/kidax.jpeg";
-import urbangrantLogo from "@/assets/urbangrant.jpeg";
+import urbangrantLogo from "@/assets/logos/logo.png";
 import PanchsheelKnitwearsLogo from "@/assets/Panchsheel-Knitwears.jpeg";
 import gst from "@/assets/gst_certificate.png";
 import udyam1 from "@/assets/UDYAM_REGISTRATION_CERTIFICATE.png";

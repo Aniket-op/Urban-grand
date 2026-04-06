@@ -1,7 +1,7 @@
 import { ChevronDown, Menu, X, Sun, Moon, Globe, LogIn, Mail, Phone } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoUrl from "@/assets/urbangrant.jpeg";
+import logoUrl from "@/assets/logos/logo.png";
 import brochurePdf from "@/assets/PANCHSHEEL-PROFILE-LATEST.pdf";
 
 type SubItem = { label: string; to: string; download?: boolean };
@@ -67,8 +67,8 @@ const Navbar = () => {
 
   // Theme
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") return localStorage.getItem("theme") || "dark";
-    return "dark";
+    if (typeof window !== "undefined") return localStorage.getItem("theme") || "light";
+    return "light";
   });
 
   useEffect(() => {
@@ -120,7 +120,7 @@ const Navbar = () => {
           <img
             src={logoUrl}
             alt="Urban Grand Logo"
-            className="h-10 w-10 sm:h-[44px] sm:w-[44px] rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 transition-transform duration-300 group-hover:scale-105"
+            className="h-10 w-10 sm:h-[44px] sm:w-[44px] rounded-sm mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
           />
           <span className={`font-heading text-[17px] sm:text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
             URBAN GRAND
@@ -279,7 +279,7 @@ const Navbar = () => {
           {/* Mobile header */}
           <div className="flex items-center justify-between px-5 h-[72px] border-b border-border/30 flex-shrink-0">
             <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
-              <img src={logoUrl} alt="Urban Grand Logo" className="h-9 w-9 rounded-sm mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-0.5" />
+              <img src={logoUrl} alt="Urban Grand Logo" className="rounded-sm mix-blend-multiply" />
               <span className="font-heading text-[17px] font-bold tracking-[0.08em]">URBAN GRAND</span>
             </Link>
             <button

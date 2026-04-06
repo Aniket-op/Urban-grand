@@ -77,7 +77,7 @@ const AboutCategory = () => {
                 <div className={`w-full ${hideImage ? 'lg:w-8/12 text-center' : 'lg:w-5/12'} flex flex-col justify-center space-y-6 animate-fade-in order-2 lg:order-none`}>
                   {heading && (
                     <div className={`flex items-center gap-4 border-b border-border/40 pb-3 ${hideImage ? 'mx-auto' : 'self-start'}`}>
-                      {logo && <img src={logo} alt={`${heading} logo`} className="h-[80px] w-auto object-contain mix-blend-multiply dark:mix-blend-normal dark:bg-white dark:p-1 rounded-md" />}
+                      {logo && <img src={logo} alt={`${heading} logo`} className="h-[80px] w-auto object-contain mix-blend-multiply dark:mix-blend-normal rounded-md" />}
                       <h3 className="text-2xl font-display font-semibold text-foreground">
                         {heading}
                       </h3>
