@@ -155,10 +155,10 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
                         <Send size={15} strokeWidth={2} />
                         Submit Enquiry
                     </button>
-                    <button type="button" onClick={handleWhatsAppSubmit} className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
+                    {/* <button type="button" onClick={handleWhatsAppSubmit} className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
                         <MessageCircle size={15} strokeWidth={2} />
                         Send via WhatsApp
-                    </button>
+                    </button> */}
                 </div>
 
                 <p className="text-center text-[10px] text-muted-foreground tracking-wider uppercase pt-1">
