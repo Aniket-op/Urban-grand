@@ -26,9 +26,9 @@ const menuItems: MenuItem[] = [
     label: "Our Products",
     slug: "products",
     subcategories: [
-      { label: "Men", to: "/contact?category=men" },
-      { label: "Women", to: "/contact?category=women" },
-      { label: "Kids", to: "/contact?category=kids" },
+      { label: "Men", to: "/category/men" },
+      { label: "Women", to: "/category/women" },
+      { label: "Kids", to: "/category/kids" },
     ],
   },
   { label: "Contact Us", to: "/map" },
