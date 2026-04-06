@@ -284,7 +284,7 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 py-14 sm:py-20 md:py-28"
+          className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 pt-4 sm:pt-8 md:pt-12 pb-14 sm:pb-20 md:pb-28"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}

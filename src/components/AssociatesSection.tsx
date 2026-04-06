@@ -37,7 +37,7 @@ const AssociatesSection = () => {
           <p className="text-[10px] tracking-[0.4em] uppercase text-muted-foreground font-semibold mb-4">
             Trusted Partners
           </p>
-          <h2 className="text-center font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.8rem] font-bold uppercase tracking-[0.06em] sm:tracking-[0.08em] text-foreground">
+          <h2 className="text-center font-display text-4xl sm:text-3xl md:text-4xl lg:text-[2.8rem] font-bold uppercase tracking-[0.06em] sm:tracking-[0.08em] text-foreground">
             Our Associates
           </h2>
           <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mt-5 mx-auto" />
