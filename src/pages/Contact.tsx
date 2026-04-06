@@ -50,7 +50,7 @@ const defaultSlides = [
 const Contact = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
-  
+
   let activeSlides = defaultSlides;
   if (category === "men") activeSlides = menSlides;
   else if (category === "women") activeSlides = womenSlides;
@@ -135,7 +135,7 @@ const Contact = () => {
         </div>
 
         {/* ── Right: Enquiry Form ── */}
-        <div className="overflow-y-auto py-10 lg:py-0 flex flex-col justify-center bg-background">
+        <div className="overflow-y-auto py-50 lg:py-0 flex flex-col justify-center bg-background pt-16 lg:pt-20">
           <EnquiryForm />
         </div>
       </div>
