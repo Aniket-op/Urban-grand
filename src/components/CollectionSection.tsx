@@ -40,21 +40,6 @@ type CollectionSlide = {
 
 const collections: CollectionSlide[] = [
   {
-    id: "women",
-    title: "Women Collection",
-    tag: "Feminine Elegance",
-    description:
-      "Crafted for the modern woman — our women's line blends timeless silhouettes with premium knitwear. Designed for warmth without compromising on style.",
-    imageRight: false,
-    accent: "bg-rose-300/60",
-    subcategories: [
-      { label: "Jackets", images: [womenJacket1, womenJacket2] },
-      { label: "Coats", images: [womenCoat] },
-      { label: "Sweaters", images: [womenSweater] },
-      { label: "Thermals", images: [womenJacket2, womenCoat] },
-    ],
-  },
-  {
     id: "men",
     title: "Men Collection",
     tag: "Bold & Refined",
@@ -70,12 +55,27 @@ const collections: CollectionSlide[] = [
     ],
   },
   {
+    id: "women",
+    title: "Women Collection",
+    tag: "Feminine Elegance",
+    description:
+      "Crafted for the modern woman — our women's line blends timeless silhouettes with premium knitwear. Designed for warmth without compromising on style.",
+    imageRight: false,
+    accent: "bg-rose-300/60",
+    subcategories: [
+      { label: "Jackets", images: [womenJacket1, womenJacket2] },
+      { label: "Coats", images: [womenCoat] },
+      { label: "Sweaters", images: [womenSweater] },
+      { label: "Thermals", images: [womenJacket2, womenCoat] },
+    ],
+  },
+  {
     id: "kids",
     title: "Kids Collection",
     tag: "Playful & Cozy",
     description:
       "Soft, durable, and endlessly fun — our kids' collection is engineered for active little lives. Premium yarns, safe dyes, and designs that kids actually love.",
-    imageRight: false,
+    imageRight: true,
     accent: "bg-amber-300/60",
     subcategories: [
       { label: "Jackets", images: [kidsJacket1, kidsJacket2] },
