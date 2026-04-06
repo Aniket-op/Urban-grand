@@ -45,36 +45,41 @@ const EnquiryModal = ({ isOpen, onClose, prefilledCategory }: EnquiryModalProps)
             onClick={onClose}
           />
 
-          {/* Modal Panel */}
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.97 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[81] w-full max-w-2xl max-h-[90vh] bg-background subtle-border-strong shadow-2xl rounded-sm overflow-hidden flex flex-col"
+          {/* Modal wrapper — flexbox centering (more reliable than translate on all viewports) */}
+          <div
+            className="fixed inset-0 z-[81] flex items-center justify-center p-3 sm:p-6 pointer-events-none"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-8 lg:px-12 py-6 border-b border-border/20 flex-shrink-0">
-              <div>
-                <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground font-semibold mb-1">
-                  {prefilledCategory ? `${prefilledCategory.charAt(0).toUpperCase() + prefilledCategory.slice(1)} Collection` : "Get in Touch"}
-                </p>
-                <h3 className="font-display text-2xl font-bold">Enquire Now</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 30, scale: 0.97 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="pointer-events-auto w-full bg-background shadow-2xl rounded-sm overflow-hidden flex flex-col"
+              style={{ maxWidth: "42rem", maxHeight: "90vh" }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between px-4 sm:px-8 lg:px-12 py-4 sm:py-6 border-b border-border/20 flex-shrink-0">
+                <div>
+                  <p className="text-[9px] sm:text-[10px] tracking-[0.25em] sm:tracking-[0.35em] uppercase text-muted-foreground font-semibold mb-1">
+                    {prefilledCategory ? `${prefilledCategory.charAt(0).toUpperCase() + prefilledCategory.slice(1)} Collection` : "Get in Touch"}
+                  </p>
+                  <h3 className="font-display text-xl sm:text-2xl font-bold">Enquire Now</h3>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="p-2.5 hover:bg-soft rounded-full transition-elegant text-muted-medium hover:text-foreground flex-shrink-0"
+                  aria-label="Close modal"
+                >
+                  <X size={20} />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="p-2.5 hover:bg-soft rounded-full transition-elegant text-muted-medium hover:text-foreground"
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-            </div>
 
-            {/* Scrollable form body */}
-            <div className="flex-1 overflow-y-auto">
-              <EnquiryForm />
-            </div>
-          </motion.div>
+              {/* Scrollable form body */}
+              <div className="flex-1 overflow-y-auto">
+                <EnquiryForm />
+              </div>
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>

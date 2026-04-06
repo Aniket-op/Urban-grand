@@ -70,9 +70,8 @@ const HeroSection = () => {
               <span className="italic font-normal">Panchsheel Knitwears</span>
             </h1>
             <p className="mt-4 sm:mt-8 max-w-md font-body text-sm sm:text-base md:text-lg font-light tracking-wide text-white/70 leading-relaxed">
-              UrbanGrand combines modern style with trusted craftsmanship,
-              <br className="hidden sm:block" />
-              delivering elegance, comfort, and lasting quality.
+              Driven by Quality,
+              Defined by Precision
             </p>
           </motion.div>
 

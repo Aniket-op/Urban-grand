@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
       { label: "Kids", to: "/contact?category=kids" },
     ],
   },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact Us", to: "/map" },
 ];
 
 const languages = [
@@ -63,8 +63,8 @@ const Navbar = () => {
 
   // Theme
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") return localStorage.getItem("theme") || "system";
-    return "system";
+    if (typeof window !== "undefined") return localStorage.getItem("theme") || "dark";
+    return "dark";
   });
 
   useEffect(() => {

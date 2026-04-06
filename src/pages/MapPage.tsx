@@ -142,7 +142,7 @@ const MapPage = () => {
             </div>
 
             {/* Email card */}
-            {/* <div className="corporate-card rounded-xl p-6 sm:p-7">
+            <div className="corporate-card rounded-xl p-6 sm:p-7">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-9 h-9 rounded-md bg-[hsl(38,60%,50%)]/10 flex items-center justify-center">
                   <Mail size={18} className="text-[hsl(38,60%,50%)]" />
@@ -152,7 +152,7 @@ const MapPage = () => {
               <a href="mailto:urbangrand78@gmail.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors break-all">
                 urbangrand78@gmail.com
               </a>
-            </div> */}
+            </div>
 
             {/* Hours card */}
             {/* <div className="corporate-card rounded-xl p-6 sm:p-7">

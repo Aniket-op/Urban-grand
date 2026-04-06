@@ -45,7 +45,7 @@ const collections: CollectionSlide[] = [
     tag: "Feminine Elegance",
     description:
       "Crafted for the modern woman — our women's line blends timeless silhouettes with premium knitwear. Designed for warmth without compromising on style.",
-    imageRight: true,
+    imageRight: false,
     accent: "bg-rose-300/60",
     subcategories: [
       { label: "Jackets", images: [womenJacket1, womenJacket2] },
@@ -60,7 +60,7 @@ const collections: CollectionSlide[] = [
     tag: "Bold & Refined",
     description:
       "Built for the contemporary man — structured cuts, premium fabrics, and versatile designs that move seamlessly from casual to formal.",
-    imageRight: false,
+    imageRight: true,
     accent: "bg-blue-300/60",
     subcategories: [
       { label: "Jackets", images: [menJacket1, menJacket2] },
@@ -75,7 +75,7 @@ const collections: CollectionSlide[] = [
     tag: "Playful & Cozy",
     description:
       "Soft, durable, and endlessly fun — our kids' collection is engineered for active little lives. Premium yarns, safe dyes, and designs that kids actually love.",
-    imageRight: true,
+    imageRight: false,
     accent: "bg-amber-300/60",
     subcategories: [
       { label: "Jackets", images: [kidsJacket1, kidsJacket2] },
@@ -243,7 +243,7 @@ const CollectionSlideComponent = ({
           href={`/category/${slide.id}`}
           className="text-[11px] font-semibold tracking-[0.2em] uppercase text-muted-medium hover:text-foreground transition-elegant underline-offset-4 hover:underline"
         >
-          View All
+          For Images
         </a>
       </div>
     </motion.div>
@@ -251,7 +251,7 @@ const CollectionSlideComponent = ({
 
   return (
     <div ref={ref} className={`w-full py-14 sm:py-20 md:py-28 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10">
         <div
           className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
             } gap-8 sm:gap-12 md:gap-16 lg:gap-24 items-center`}
@@ -284,7 +284,7 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-16 py-14 sm:py-20 md:py-28"
+          className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 py-14 sm:py-20 md:py-28"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}

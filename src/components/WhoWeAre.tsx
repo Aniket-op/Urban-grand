@@ -13,7 +13,7 @@ const WhoWeAre = () => {
       id="who-we-are"
       className="w-full py-16 sm:py-28 md:py-40 bg-background overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-24 items-center">
         {/* Left — Image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -37,7 +37,7 @@ const WhoWeAre = () => {
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 md:-right-10 bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,18%)] dark:border dark:border-white/10 text-white px-5 py-4 sm:px-8 sm:py-6 shadow-2xl rounded-lg"
           >
-            <span className="block text-2xl sm:text-3xl font-heading font-bold">25+</span>
+            <span className="block text-2xl sm:text-3xl font-heading font-bold">48+</span>
             <span className="block text-[10px] tracking-[0.25em] uppercase mt-1 opacity-60 font-medium">Years of Craft</span>
           </motion.div>
 
