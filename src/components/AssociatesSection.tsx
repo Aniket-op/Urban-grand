@@ -49,10 +49,10 @@ const AssociatesSection = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-center max-w-3xl mx-auto mb-14"
         >
-          <p className="text-base text-muted-medium leading-relaxed">
+          <p className="text-base text-muted-medium leading-relaxed text-justify">
             We partner with brands that value quality, consistency, and growth. We go beyond manufacturing —
           </p>
-          <p className="text-base text-muted-medium leading-relaxed mt-2">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
+          <p className="text-base text-muted-medium leading-relaxed mt-2 text-justify">We become an extension of your brand, delivering products that align with your vision, market positioning and customer expectations.</p>
         </motion.div>
       </div>
 

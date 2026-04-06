@@ -86,7 +86,7 @@ const WhoWeAre = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="space-y-5"
+            className="space-y-5 text-justify"
           >
             <p className="text-[15px] sm:text-base md:text-lg text-muted-medium leading-relaxed">
               Urban Grand is the premium fashion label of{" "}

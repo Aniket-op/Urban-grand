@@ -177,7 +177,7 @@ const CollectionSlideComponent = ({
           {slide.title}
         </h2>
         <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 my-5" />
-        <p className="text-[15px] text-muted-medium leading-relaxed max-w-[420px]">
+        <p className="text-[15px] text-muted-medium leading-relaxed max-w-[420px] text-justify">
           {slide.description}
         </p>
       </div>
