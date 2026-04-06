@@ -48,13 +48,13 @@ const collections: CollectionSlide[] = [
     imageRight: true,
     accent: "bg-blue-300/60",
     subcategories: [
-      { label: "Jacket", images: [menJacket1, menJacket2] },
-      { label: "Coats", images: [menCoat] },
-      { label: "Sweatshirts", images: [menSweater] },
-      { label: "Hoodies", images: [menHoodie1, menHoodie2] },
-      { label: "T-Shirts", images: [menJacket1] },
-      { label: "Lowers", images: [menJacket2] },
-      { label: "Thermal", images: [menCoat] },
+      { label: "Jacket", images: [menJacket1, menJacket2, menCoat, menJacket1, menJacket2] },
+      { label: "Coats", images: [menCoat, menJacket1, menJacket2, menCoat, menJacket1, menJacket2] },
+      { label: "Sweatshirts", images: [menSweater, menCoat, menJacket1, menCoat, menJacket1, menJacket2] },
+      { label: "Hoodies", images: [menHoodie1, menHoodie2, menJacket1, menCoat, menJacket1, menJacket2] },
+      { label: "T-Shirts", images: [menJacket1, menJacket2, menCoat, menCoat, menJacket1, menJacket2] },
+      { label: "Lowers", images: [menJacket2, menJacket1, menCoat, menCoat, menJacket1, menJacket2] },
+      { label: "Thermal", images: [menCoat, menJacket1, menJacket2, menCoat, menJacket1, menJacket2] },
     ],
   },
   {
@@ -66,12 +66,12 @@ const collections: CollectionSlide[] = [
     imageRight: false,
     accent: "bg-rose-300/60",
     subcategories: [
-      { label: "Jacket", images: [womenJacket1, womenJacket2] },
-      { label: "Coats", images: [womenCoat] },
-      { label: "Sweatshirts", images: [womenSweater] },
-      { label: "Hoodies", images: [womenJacket1] },
-      { label: "Thermal", images: [womenSweater] },
-      { label: "Cardigans", images: [womenJacket2] },
+      { label: "Jacket", images: [womenJacket1, womenJacket2, womenCoat, womenJacket1, womenJacket2] },
+      { label: "Coats", images: [womenCoat, womenJacket1, womenJacket2, womenJacket1, womenSweater, womenJacket1, womenCoat,] },
+      { label: "Sweatshirts", images: [womenSweater, womenCoat, womenJacket1, womenCoat, womenJacket1, womenJacket2] },
+      { label: "Hoodies", images: [womenJacket1, womenSweater, womenJacket1, womenCoat,] },
+      { label: "Thermal", images: [womenSweater, womenJacket2, womenCoat, womenJacket1, womenSweater, womenJacket1, womenCoat,] },
+      { label: "Cardigans", images: [womenJacket2, womenCoat, womenSweater, womenJacket1, womenSweater, womenJacket1, womenCoat,] },
     ],
   },
   {
@@ -83,10 +83,10 @@ const collections: CollectionSlide[] = [
     imageRight: true,
     accent: "bg-amber-300/60",
     subcategories: [
-      { label: "Jacket", images: [kidsJacket1, kidsJacket2] },
-      { label: "Coats", images: [kidsCoat] },
-      { label: "Sweaters", images: [kidsHoodie1] },
-      { label: "Thermal", images: [kidsCoat] },
+      { label: "Jacket", images: [kidsJacket1, kidsJacket2, kidsCoat, kidsJacket1, kidsJacket2] },
+      { label: "Coats", images: [kidsCoat, kidsJacket1, kidsJacket2, kidsCoat, kidsJacket1, kidsJacket2] },
+      { label: "Sweaters", images: [kidsHoodie1, kidsHoodie2, kidsCoat, kidsJacket1, kidsJacket2] },
+      { label: "Thermal", images: [kidsCoat, kidsJacket1, kidsJacket2, kidsCoat, kidsJacket1, kidsJacket2] },
     ],
   },
 ];
@@ -117,7 +117,7 @@ const CollectionSlideComponent = ({
         return next;
       });
       setActiveImg(0);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [slide.subcategories.length]);
 
