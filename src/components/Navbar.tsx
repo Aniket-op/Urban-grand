@@ -9,7 +9,7 @@ type MenuItem =
   | { label: string; to: string; slug?: never; subcategories?: never }
   | { label: string; to?: never; slug: string; subcategories: SubItem[] };
 
-const menuItems: MenuItem[] = [
+const centerMenuItems: MenuItem[] = [
   { label: "Home Page", to: "/" },
   {
     label: "Discover Us",
@@ -31,6 +31,10 @@ const menuItems: MenuItem[] = [
       { label: "Kids", to: "/category/kids" },
     ],
   },
+];
+
+const allMenuItems: MenuItem[] = [
+  ...centerMenuItems,
   { label: "Contact Us", to: "/map" },
 ];
 
@@ -123,12 +127,12 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop nav links + language — centered in navbar */}
+        {/* Desktop nav links — centered in navbar */}
         <div
           className={`hidden md:flex gap-4 lg:gap-7 items-center h-full absolute left-1/2 -translate-x-1/2 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
             }`}
         >
-          {menuItems.map((item) => {
+          {centerMenuItems.map((item) => {
             if (item.to) {
               const active = location.pathname === item.to;
               return (
@@ -179,8 +183,27 @@ const Navbar = () => {
               </div>
             );
           })}
-          {/* Language Dropdown — part of centered nav */}
-          <div className="w-px h-4 bg-foreground/15 mx-1 lg:mx-2" />
+        </div>
+
+        {/* Desktop right actions — fade in when scrolled */}
+        <div
+          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-auto transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+            }`}
+        >
+          {/* Contact Us link */}
+          <Link
+            to="/map"
+            className={`text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.12em] transition-elegant relative group whitespace-nowrap ${location.pathname === "/map" ? "text-foreground" : "text-foreground/70 hover:text-foreground"}`}
+          >
+            Contact Us
+            <span
+              className={`absolute bottom-[-4px] left-0 w-full h-[1.5px] bg-foreground transition-transform origin-left ${location.pathname === "/map" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+            />
+          </Link>
+
+          <div className="w-px h-4 bg-foreground/15 mx-1" />
+
+          {/* Language Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setLangOpen(true)}
@@ -196,8 +219,7 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
-                }`}
+              className={`absolute top-full right-0 mt-4 w-44 bg-background border border-border/60 shadow-lg shadow-black/[0.06] rounded-md transition-all duration-300 py-1 ${langOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"}`}
             >
               {languages.map((lang) => (
                 <button
@@ -205,8 +227,7 @@ const Navbar = () => {
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
                   className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
                     ? "text-foreground font-semibold bg-muted/50"
-                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"
-                    }`}
+                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"}`}
                 >
                   <span className="text-base">{lang.flag}</span>
                   {lang.label}
@@ -214,13 +235,8 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Desktop right actions — fade in when scrolled */}
-        <div
-          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-auto transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
-            }`}
-        >
+          <div className="w-px h-4 bg-foreground/15 mx-1" />
 
           <button
             onClick={toggleTheme}
@@ -277,7 +293,7 @@ const Navbar = () => {
 
           {/* Mobile nav links */}
           <div className="flex-1 overflow-y-auto py-4">
-            {menuItems.map((item) => {
+            {allMenuItems.map((item) => {
               if (item.to) {
                 return (
                   <Link
