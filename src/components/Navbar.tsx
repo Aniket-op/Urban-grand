@@ -1,4 +1,4 @@
-import { ChevronDown, Menu, X, Sun, Moon, Globe, Monitor, LogIn, Mail, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Sun, Moon, Globe, LogIn, Mail, Phone } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoUrl from "@/assets/urbangrant.jpeg";
@@ -70,23 +70,12 @@ const Navbar = () => {
   useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove("light", "dark");
-    if (theme === "system") {
-      const sys = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-      root.classList.add(sys);
-      const listener = (e: MediaQueryListEvent) => {
-        root.classList.remove("light", "dark");
-        root.classList.add(e.matches ? "dark" : "light");
-      };
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", listener);
-      return () => window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", listener);
-    } else {
-      root.classList.add(theme);
-    }
+    root.classList.add(theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () =>
-    setTheme((p) => (p === "light" ? "dark" : p === "dark" ? "system" : "light"));
+    setTheme((p) => (p === "light" ? "dark" : "light"));
 
   // Language
   const [langOpen, setLangOpen] = useState(false);
@@ -239,7 +228,7 @@ const Navbar = () => {
             aria-label="Toggle theme"
             title={`Theme: ${theme}`}
           >
-            {theme === "light" ? <Sun size={16} /> : theme === "dark" ? <Moon size={16} /> : <Monitor size={16} />}
+            {theme === "light" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
           {/* Login Button */}
@@ -376,8 +365,6 @@ const Navbar = () => {
               >
                 {theme === "light" ? (
                   <><Moon size={18} /> Dark Mode</>
-                ) : theme === "dark" ? (
-                  <><Monitor size={18} /> System</>
                 ) : (
                   <><Sun size={18} /> Light Mode</>
                 )}

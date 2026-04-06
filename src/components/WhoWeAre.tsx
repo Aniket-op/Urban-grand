@@ -13,7 +13,7 @@ const WhoWeAre = () => {
       id="who-we-are"
       className="w-full py-16 sm:py-28 md:py-40 bg-background overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-24 items-center">
+      <div className="max-w-[1440px] mx-auto px-2 sm:px-3 md:px-4 lg:px-6 grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-24 items-center">
         {/* Left — Image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
