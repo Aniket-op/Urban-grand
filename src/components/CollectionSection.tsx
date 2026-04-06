@@ -125,7 +125,7 @@ const CollectionSlideComponent = ({
       initial={{ opacity: 0, x: slide.imageRight ? 60 : -60 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full md:w-[52%] aspect-[3/4] overflow-hidden rounded-lg flex-shrink-0 group shadow-xl shadow-black/[0.06]"
+      className="relative w-full md:w-[52%] overflow-hidden rounded-lg flex-shrink-0 group shadow-xl shadow-black/[0.06]"
     >
       <AnimatePresence mode="wait">
         <motion.img
