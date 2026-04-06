@@ -96,10 +96,14 @@ const Navbar = () => {
       <nav
         ref={navRef}
         className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)] ${scrolled
-          ? "top-0 bg-[#FAF9F6] shadow-sm border-b border-border/40"
-          : "top-3 bg-transparent border-transparent"
+          ? "top-0 bg-[#FAF9F6] shadow-sm"
+          : "top-3 bg-transparent"
           }`}
       >
+        {/* Decorative gold accent line */}
+        <div 
+          className={`absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[hsl(38,60%,50%)] to-transparent transition-opacity duration-500 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`} 
+        />
         {/*
           Logo slides from center → left.
           We use a wrapper that occupies the full navbar width,
