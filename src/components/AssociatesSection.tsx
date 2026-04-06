@@ -68,7 +68,7 @@ const AssociatesSection = () => {
               <img
                 src={img}
                 alt={`Associate ${index}`}
-                className="w-full h-full object-contain p-4 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500"
+                className="w-full h-full object-contain p-4 group-hover:scale-110 transition-all duration-500"
               />
             </div>
           ))}
