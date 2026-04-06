@@ -21,11 +21,11 @@ const WhoWeAre = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative group"
         >
-          <div className="relative overflow-hidden rounded-lg aspect-[4/5] shadow-xl shadow-black/[0.08]">
+          <div className="relative overflow-hidden rounded-lg shadow-xl shadow-black/[0.08]">
             <img
               src={legacyImg}
               alt="Urban Grand Heritage"
-              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="w-full h-[80vh] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
             {/* Accent border */}
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-lg pointer-events-none" />

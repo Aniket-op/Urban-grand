@@ -136,7 +136,7 @@ const CollectionSlideComponent = ({
           transition={{ duration: 0.5, ease: "easeOut" }}
           src={currentImages[activeImg] ?? currentImages[0]}
           alt={`${slide.title} — ${slide.subcategories[activeSub]?.label}`}
-          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          className="w-full h-[80vh] object-cover group-hover:scale-[1.03] transition-transform duration-700"
         />
       </AnimatePresence>
 

@@ -311,11 +311,10 @@ const ImageLightbox = ({
             <button
               key={i}
               onClick={() => onNavigate(i)}
-              className={`h-12 w-10 sm:h-14 sm:w-11 rounded-md overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
-                i === currentIndex
+              className={`h-12 w-10 sm:h-14 sm:w-11 rounded-md overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${i === currentIndex
                   ? "border-white/80 scale-105 ring-1 ring-white/30"
                   : "border-white/15 opacity-50 hover:opacity-80 hover:border-white/40"
-              }`}
+                }`}
             >
               <img src={img.image} alt="" className="h-full w-full object-cover" />
             </button>
