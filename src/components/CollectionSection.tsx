@@ -250,7 +250,7 @@ const CollectionSlideComponent = ({
   );
 
   return (
-    <div ref={ref} className={`w-full py-14 sm:py-20 md:py-28 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
+    <div ref={ref} className={`w-full py-8 sm:py-12 md:py-16 ${isAlt ? 'bg-section-alt' : 'bg-background'}`}>
       <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10">
         <div
           className={`flex flex-col ${slide.imageRight ? "md:flex-row" : "md:flex-row-reverse"
@@ -284,7 +284,7 @@ const CollectionSection = () => {
         {/* Section header */}
         <div
           ref={sectionRef}
-          className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 pt-4 sm:pt-8 md:pt-12 pb-14 sm:pb-20 md:pb-28"
+          className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10 pt-4 sm:pt-8 md:pt-12 pb-6 sm:pb-10 md:pb-12"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
