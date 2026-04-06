@@ -106,7 +106,7 @@ const OurStory = () => {
           <div className="flex gap-4 flex-wrap justify-center">
             <Link
               to="/contact"
-              className="px-8 py-3 rounded-full bg-white text-foreground text-xs font-bold tracking-[0.2em] uppercase hover:bg-white/90 transition-elegant"
+              className="px-8 py-3 rounded-full bg-white text-black text-xs font-bold tracking-[0.2em] uppercase hover:bg-white/90 transition-elegant"
             >
               Get in Touch
             </Link>

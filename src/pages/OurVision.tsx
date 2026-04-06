@@ -49,7 +49,7 @@ const OurVision = () => {
           </p>
           <Link
             to="/contact"
-            className="mt-10 px-10 py-4 rounded-full bg-white text-foreground text-xs font-bold tracking-[0.25em] uppercase hover:bg-white/90 transition-elegant"
+            className="mt-10 px-10 py-4 rounded-full bg-white text-black text-xs font-bold tracking-[0.25em] uppercase hover:bg-white/90 transition-elegant"
           >
             Start Your Journey
           </Link>

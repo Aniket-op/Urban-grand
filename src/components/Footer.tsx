@@ -17,7 +17,7 @@ const platformLinks = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#FAF9F6] text-zinc-800 font-sans">
+    <footer className="w-full bg-[#FAF9F6] dark:bg-background text-zinc-800 dark:text-zinc-200 font-sans">
       {/* Decorative gold accent line */}
       <div className="h-[3px] bg-gradient-to-r from-transparent via-[hsl(38,60%,50%)] to-transparent" />
 
@@ -28,15 +28,15 @@ const Footer = () => {
           <div className="flex flex-col gap-5 lg:w-1/4">
             <Link to="/" className="inline-flex items-center gap-3">
               <img src={logoUrl} alt="UrbanGrand Logo" className="h-14 w-auto rounded-md" />
-              <p className="font-heading text-xl font-bold text-zinc-900 tracking-wide">URBAN GRAND</p>
+              <p className="font-heading text-xl font-bold text-zinc-900 dark:text-zinc-100 tracking-wide">URBAN GRAND</p>
             </Link>
             <div className="space-y-1">
-              <p className="text-[13px] text-zinc-800 leading-relaxed font-medium">Premium Line by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
+              <p className="text-[13px] text-zinc-800 dark:text-zinc-300 leading-relaxed font-medium">Premium Line by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
             </div>
             {/* Social Icons */}
             <div className="flex gap-3 mt-2">
               {[Linkedin, Facebook, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="flex items-center justify-center w-9 h-9 rounded-md bg-zinc-200/60 border border-zinc-300/40 hover:bg-zinc-300 hover:border-zinc-400 transition-all text-zinc-800 hover:text-zinc-900">
+                <a key={i} href="#" className="flex items-center justify-center w-9 h-9 rounded-md bg-zinc-200/60 dark:bg-zinc-800/60 border border-zinc-300/40 dark:border-zinc-700/40 hover:bg-zinc-300 dark:hover:bg-zinc-700 hover:border-zinc-400 object-zinc-400 transition-all text-zinc-800 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-zinc-100">
                   <Icon size={16} />
                 </a>
               ))}
@@ -48,13 +48,13 @@ const Footer = () => {
 
             {/* Platform */}
             <div className="flex flex-col gap-5 min-w-[140px]">
-              <h3 className="text-zinc-900 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Platform</h3>
+              <h3 className="text-zinc-900 dark:text-zinc-100 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Platform</h3>
               <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
               <ul className="space-y-3.5">
                 {platformLinks.map((item) => (
                   <li key={item.label}>
-                    <Link to={item.to} className="flex items-center text-[13px] font-medium text-zinc-800 hover:text-zinc-900 transition-colors group">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
+                    <Link to={item.to} className="flex items-center text-[13px] font-medium text-zinc-800 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 dark:bg-zinc-400 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] dark:group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
                       {item.label}
                     </Link>
                   </li>
@@ -64,13 +64,13 @@ const Footer = () => {
 
             {/* Company */}
             <div className="flex flex-col gap-5 min-w-[140px]">
-              <h3 className="text-zinc-900 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Company</h3>
+              <h3 className="text-zinc-900 dark:text-zinc-100 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Company</h3>
               <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
               <ul className="space-y-3.5">
                 {companyLinks.map((item) => (
                   <li key={item.label}>
-                    <Link to={item.to} className="flex items-center text-[13px] font-medium text-zinc-800 hover:text-zinc-900 transition-colors group">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
+                    <Link to={item.to} className="flex items-center text-[13px] font-medium text-zinc-800 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors group">
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-600 dark:bg-zinc-400 mr-3 flex-shrink-0 group-hover:bg-[hsl(38,60%,50%)] dark:group-hover:bg-[hsl(38,60%,50%)] transition-colors" />
                       {item.label}
                     </Link>
                   </li>
@@ -80,18 +80,18 @@ const Footer = () => {
 
             {/* Contact */}
             <div className="flex flex-col gap-5 min-w-[200px]">
-              <h3 className="text-zinc-900 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Contact</h3>
+              <h3 className="text-zinc-900 dark:text-zinc-100 font-heading font-semibold text-[14px] uppercase tracking-[0.1em]">Contact</h3>
               <div className="h-[2px] w-8 bg-[hsl(38,60%,50%)]/60" />
-              <ul className="space-y-3.5 text-[13px] font-medium text-zinc-800">
+              <ul className="space-y-3.5 text-[13px] font-medium text-zinc-800 dark:text-zinc-300">
                 <li>
-                  <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center hover:text-zinc-900 transition-colors lowercase">
-                    <Mail size={15} className="text-zinc-700 mr-3 flex-shrink-0" />
+                  <a href="mailto:URBANGRAND78@GMAIL.COM" className="flex items-center hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors lowercase">
+                    <Mail size={15} className="text-zinc-700 dark:text-zinc-400 mr-3 flex-shrink-0" />
                     URBANGRAND78@GMAIL.COM
                   </a>
                 </li>
                 <li>
                   <div className="flex items-start">
-                    <Phone size={15} className="text-zinc-700 mr-3 flex-shrink-0 mt-0.5" />
+                    <Phone size={15} className="text-zinc-700 dark:text-zinc-400 mr-3 flex-shrink-0 mt-0.5" />
                     <div className="flex flex-col gap-1">
                       <span>(+91) 76968-80871</span>
                       <span>(+91) 94170-15928</span>
@@ -100,8 +100,8 @@ const Footer = () => {
                   </div>
                 </li>
                 <li className="pt-1">
-                  <Link to="/map" className="flex items-start text-zinc-800 hover:text-zinc-900 transition-colors">
-                    <MapPin size={15} className="text-zinc-700 mr-3 flex-shrink-0 mt-0.5" />
+                  <Link to="/map" className="flex items-start text-zinc-800 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                    <MapPin size={15} className="text-zinc-700 dark:text-zinc-400 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="leading-relaxed">213/15-C, NEW KUNDAN PURI,<br />CIVIL LINES, LUDHIANA-141001 PUNJAB</span>
                   </Link>
                 </li>
@@ -111,11 +111,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-zinc-300/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-zinc-700 font-bold">
+        <div className="max-w-7xl mx-auto border-t border-zinc-300/60 dark:border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-zinc-700 dark:text-zinc-400 font-bold">
             © {new Date().getFullYear()} Panchsheel Knitwears. All rights reserved.
           </p>
-          <p className="text-[10px] text-zinc-700 tracking-wider uppercase font-bold">
+          <p className="text-[10px] text-zinc-700 dark:text-zinc-400 tracking-wider uppercase font-bold">
             Premium Knitwear Manufacturing Since 1978
           </p>
         </div>
