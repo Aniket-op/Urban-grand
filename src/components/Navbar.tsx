@@ -26,9 +26,9 @@ const menuItems: MenuItem[] = [
     label: "Our Products",
     slug: "products",
     subcategories: [
-      { label: "Men", to: "/contact?category=men" },
-      { label: "Women", to: "/contact?category=women" },
-      { label: "Kids", to: "/contact?category=kids" },
+      { label: "Men", to: "/category/men" },
+      { label: "Women", to: "/category/women" },
+      { label: "Kids", to: "/category/kids" },
     ],
   },
   { label: "Contact Us", to: "/map" },
@@ -134,9 +134,9 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop nav links — fade in when scrolled */}
+        {/* Desktop nav links + language — centered in navbar */}
         <div
-          className={`hidden md:flex gap-4 lg:gap-7 items-center h-full ml-auto transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+          className={`hidden md:flex gap-4 lg:gap-7 items-center h-full absolute left-1/2 -translate-x-1/2 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
             }`}
         >
           {menuItems.map((item) => {
@@ -190,14 +190,8 @@ const Navbar = () => {
               </div>
             );
           })}
-        </div>
-
-        {/* Desktop right actions — fade in when scrolled */}
-        <div
-          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-4 lg:ml-6 transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
-            }`}
-        >
-          {/* Language Dropdown */}
+          {/* Language Dropdown — part of centered nav */}
+          <div className="w-px h-4 bg-foreground/15 mx-1 lg:mx-2" />
           <div
             className="relative"
             onMouseEnter={() => setLangOpen(true)}
@@ -231,8 +225,14 @@ const Navbar = () => {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Theme Toggle */}
+        {/* Desktop right actions — fade in when scrolled */}
+        <div
+          className={`hidden md:flex items-center gap-2 lg:gap-3 ml-auto transition-all duration-500 ${scrolled ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-1"
+            }`}
+        >
+
           <button
             onClick={toggleTheme}
             className="p-2 rounded-md hover:bg-muted/50 transition-elegant text-foreground/70 hover:text-foreground"
