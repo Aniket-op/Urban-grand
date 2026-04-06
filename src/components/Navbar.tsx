@@ -405,7 +405,7 @@ const Navbar = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[70]"
             onClick={() => setLoginOpen(false)}
           />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-2rem)] max-w-md bg-background border border-border/60 shadow-2xl rounded-lg p-8 sm:p-10">
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-2rem)] max-w-md bg-background border border-color-[hsl(38,60%,50%)] rounded-lg p-8 sm:p-10">
             <button
               onClick={() => setLoginOpen(false)}
               className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-muted-medium"

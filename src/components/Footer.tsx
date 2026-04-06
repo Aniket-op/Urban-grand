@@ -31,7 +31,7 @@ const Footer = () => {
               <p className="font-heading text-xl font-bold text-zinc-900 tracking-wide">URBAN GRAND</p>
             </Link>
             <div className="space-y-1">
-              <p className="text-[13px] text-zinc-800 leading-relaxed font-medium">Premium knitwear by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
+              <p className="text-[13px] text-zinc-800 leading-relaxed font-medium">Premium Line by Panchsheel Knitwears.<br />Trusted craftsmanship since 1978.</p>
             </div>
             {/* Social Icons */}
             <div className="flex gap-3 mt-2">

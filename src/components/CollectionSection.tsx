@@ -131,39 +131,49 @@ const CollectionSlideComponent = ({
       initial={{ opacity: 0, x: slide.imageRight ? 60 : -60 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full md:w-[52%] overflow-hidden rounded-lg flex-shrink-0 group shadow-xl shadow-black/[0.06]"
+      className="relative w-full md:w-[52%] flex-shrink-0 group"
     >
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={`${activeSub}-${activeImg}`}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          src={currentImages[activeImg] ?? currentImages[0]}
-          alt={`${slide.title} — ${slide.subcategories[activeSub]?.label}`}
-          className="w-full h-[80vh] object-cover group-hover:scale-[1.03] transition-transform duration-700"
-        />
-      </AnimatePresence>
+      <div className="relative overflow-hidden rounded-lg shadow-xl shadow-black/[0.06] w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={`${activeSub}-${activeImg}`}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            src={currentImages[activeImg] ?? currentImages[0]}
+            alt={`${slide.title} — ${slide.subcategories[activeSub]?.label}`}
+            className="w-full h-[80vh] object-cover group-hover:scale-[1.03] transition-transform duration-700"
+          />
+        </AnimatePresence>
 
-      {/* Image thumbnails when multiple images available */}
-      {currentImages.length > 1 && (
-        <div className="absolute bottom-4 right-4 flex gap-2">
-          {currentImages.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setActiveImg(i)}
-              className={`h-12 w-10 rounded-md overflow-hidden border-2 transition-all duration-200 ${i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
-                }`}
-            >
-              <img src={img} alt="" className="h-full w-full object-cover" />
-            </button>
-          ))}
-        </div>
-      )}
+        {/* Image thumbnails when multiple images available */}
+        {currentImages.length > 1 && (
+          <div className="absolute bottom-4 right-4 flex gap-2 z-10">
+            {currentImages.map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImg(i)}
+                className={`h-12 w-10 rounded-md overflow-hidden border-2 transition-all duration-200 ${i === activeImg ? "border-white scale-105" : "border-white/30 hover:border-white/60"
+                  }`}
+              >
+                <img src={img} alt="" className="h-full w-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
 
-      {/* Accent dot */}
-      <div className={`absolute top-6 left-6 w-3 h-3 rounded-full ${slide.accent} ring-4 ring-white/20`} />
+        {/* Accent dot */}
+        <div className={`absolute top-6 left-6 w-3 h-3 rounded-full ${slide.accent} ring-4 ring-white/20 z-10`} />
+      </div>
+
+      {/* Decorative accent line */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        animate={inView ? { scaleY: 1 } : {}}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className={`absolute ${slide.imageRight ? "-right-3 sm:-right-4" : "-left-3 sm:-left-4"} top-8 bottom-8 w-[3px] bg-[hsl(38,60%,50%)] origin-top rounded-full hidden md:block`}
+      />
     </motion.div>
   );
 
