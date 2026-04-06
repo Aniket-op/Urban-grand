@@ -53,8 +53,8 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
                 prefilledDetails = `I am interested in bulk ordering from the ${catName} category.\n\nPlease provide more information regarding pricing, MOQs, and available materials.\n\nAdditional Requirements:\n`;
             }
 
-            setFormData((prev) => ({ 
-                ...prev, 
+            setFormData((prev) => ({
+                ...prev,
                 category: urlCategory || prev.category,
                 details: prefilledDetails || prev.details
             }));
@@ -105,13 +105,13 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
     };
 
     const inputClass = (field: string) =>
-        `w-full bg-background border ${errors[field] ? "border-red-500" : "border-border"} px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm`;
+        `w-full bg-background border ${errors[field] ? "border-red-500" : "border-border"} px-3 sm:px-4 py-3 sm:py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm`;
 
     return (
-        <div className="w-full h-full overflow-y-auto px-8 lg:px-12 py-10">
+        <div className="w-full h-full overflow-y-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-10">
             <div className="mb-8">
                 <p className="text-xs uppercase tracking-[0.35em] text-muted-soft font-semibold mb-2">Get In Touch</p>
-                <h2 className="font-display text-3xl font-bold text-foreground">Bulk & Custom Orders</h2>
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Bulk & Custom Orders</h2>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed max-w-sm">
                     Corporate gifting, wedding trousseau, or bulk orders? Fill in the form and our team will be in touch.
                 </p>
@@ -143,23 +143,6 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
                     </div>
                 </div>
 
-                <div>
-                    <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">What are you looking for?</label>
-                    <div className="relative">
-                        <select name="category" value={formData.category} onChange={handleChange} className="w-full appearance-none bg-background border border-border px-4 py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm text-foreground">
-                            <option value="" disabled>Select a category</option>
-                            {categories.map((cat) => (
-                                <option key={cat.slug} value={cat.slug}>{cat.name}</option>
-                            ))}
-                            <option value="other">Other / Mixed</option>
-                        </select>
-                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted-foreground">
-                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
 
                 <div>
                     <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Details of your Enquiry *</label>
@@ -168,11 +151,11 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button type="submit" onClick={handleSubmit} className="flex-1 flex items-center justify-center gap-2 bg-foreground text-primary-foreground hover:opacity-80 px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
+                    <button type="submit" onClick={handleSubmit} className="flex-1 flex items-center justify-center gap-2 bg-foreground text-primary-foreground hover:opacity-80 px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
                         <Send size={15} strokeWidth={2} />
                         Submit Enquiry
                     </button>
-                    <button type="button" onClick={handleWhatsAppSubmit} className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-8 py-4 text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
+                    <button type="button" onClick={handleWhatsAppSubmit} className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
                         <MessageCircle size={15} strokeWidth={2} />
                         Send via WhatsApp
                     </button>

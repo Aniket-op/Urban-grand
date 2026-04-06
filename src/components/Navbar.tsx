@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
       { label: "Kids", to: "/contact?category=kids" },
     ],
   },
-  { label: "Contact Us", to: "/contact" },
+  { label: "Contact Us", to: "/map" },
 ];
 
 const languages = [

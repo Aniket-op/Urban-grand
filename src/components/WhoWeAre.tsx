@@ -37,7 +37,7 @@ const WhoWeAre = () => {
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 md:-right-10 bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,18%)] dark:border dark:border-white/10 text-white px-5 py-4 sm:px-8 sm:py-6 shadow-2xl rounded-lg"
           >
-            <span className="block text-2xl sm:text-3xl font-heading font-bold">25+</span>
+            <span className="block text-2xl sm:text-3xl font-heading font-bold">48+</span>
             <span className="block text-[10px] tracking-[0.25em] uppercase mt-1 opacity-60 font-medium">Years of Craft</span>
           </motion.div>
 
