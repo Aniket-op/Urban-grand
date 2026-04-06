@@ -88,17 +88,17 @@ const WhoWeAre = () => {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="space-y-5 text-justify"
           >
-            <p className="text-[15px] sm:text-base md:text-lg text-muted-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-medium leading-relaxed">
               Urban Grand is the premium fashion label of{" "}
               <span className="font-semibold text-foreground">Panchsheel Knitwears</span> — a legacy
               built over decades of precision craftsmanship and an unwavering commitment to quality.
             </p>
-            <p className="text-[15px] text-muted-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-medium leading-relaxed">
               From the looms of Ludhiana to wardrobes across India, we design knitwear that tells a
               story — where tradition meets modern silhouette. Every stitch reflects the care of
               skilled artisans and the vision of a brand that has always put quality first.
             </p>
-            <p className="text-[15px] text-muted-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-medium leading-relaxed">
               We cater to men, women, and children — offering timeless cuts, premium yarns, and
               seasonal collections that define contemporary Indian fashion.
             </p>
