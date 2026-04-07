@@ -14,20 +14,20 @@ const MapPage = () => {
       <Navbar />
 
       {/* Hero banner */}
-      <div className="bg-gradient-to-br from-[hsl(220,25%,10%)] to-[hsl(220,20%,18%)] text-zinc-50 px-5 sm:px-8 py-16 sm:py-24 text-center">
+      <div className="border-b border-[#cd9a33]/60 text-zinc-50 px-5 sm:px-8 py-16 sm:py-24 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[10px] uppercase tracking-[0.4em] opacity-50 mb-4 font-medium">
+          <p className="text-[10px] text-foreground uppercase tracking-[0.4em] opacity-50 mb-4 font-medium">
             Find Us
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          <h1 className="text-foreground font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
             Our Location
           </h1>
           <div className="h-[2px] bg-[hsl(38,60%,50%)] w-14 mt-6 mx-auto" />
-          <p className="mt-5 max-w-xl mx-auto text-sm opacity-60 leading-relaxed">
+          <p className="mt-5 max-w-xl mx-auto text-foreground text-sm opacity-60 leading-relaxed">
             Visit our manufacturing unit and showroom in the heart of Ludhiana, Punjab.
           </p>
         </motion.div>
@@ -46,14 +46,14 @@ const MapPage = () => {
           >
             <div className="corporate-card rounded-xl overflow-hidden">
               {/* Map header */}
-              <div className="bg-[hsl(220,25%,12%)] dark:bg-[hsl(220,20%,15%)] px-5 sm:px-6 py-4 flex items-center justify-between">
+              <div className="bg-background px-5 sm:px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-md bg-[hsl(38,60%,50%)]/20 flex items-center justify-center">
                     <MapPin size={16} className="text-[hsl(38,60%,50%)]" />
                   </div>
                   <div>
-                    <p className="text-white text-sm font-semibold">Panchsheel Knitwears</p>
-                    <p className="text-white/50 text-[11px]">Manufacturing Unit & Showroom</p>
+                    <p className="text-foreground text-sm font-semibold">Panchsheel Knitwears</p>
+                    <p className="text-foreground text-[11px]">Manufacturing Unit & Showroom</p>
                   </div>
                 </div>
                 <a
