@@ -53,8 +53,8 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mb-5 sm:mb-6"
           >
-            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-white/60 font-medium border border-white/15 px-3 sm:px-4 py-1.5 rounded-sm backdrop-blur-sm bg-white/[.1]">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-[0.35em] text-white font-medium border border-white/15 px-3 sm:px-4 py-1.5 rounded-sm backdrop-blur-sm bg-white/[.1]">
+              <span className="w-1.5 h-1.5 rounded-full bg-white" />
               Established 1978
             </span>
           </motion.div>
