@@ -95,8 +95,8 @@ const Navbar = () => {
       {/* ── NAV BAR ──────────────────────────────────────────────────────── */}
       <nav
         ref={navRef}
-        className={`h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)] ${scrolled
-          ? "top-0 bg-[#FAF9F6] dark:bg-background shadow-sm"
+        className={`force-light h-[72px] flex items-center px-4 sm:px-5 lg:px-12 fixed w-full z-50 transition-all duration-700 ease-[cubic-bezier(0.22_1_0.36_1)] ${scrolled
+          ? "top-0 bg-[#FAF9F6] shadow-sm"
           : "top-3 bg-transparent"
           }`}
       >
@@ -126,7 +126,7 @@ const Navbar = () => {
             alt="Urban Grand Logo"
             className="h-10 w-10 sm:h-[44px] sm:w-[44px] rounded-sm mix-blend-multiply transition-transform duration-300 group-hover:scale-105"
           />
-          <span className={`font-heading text-[17px] sm:text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 ${!scrolled ? "text-white" : ""}`}>
+          <span className={`font-heading text-[17px] sm:text-[20px] font-bold tracking-[0.08em] leading-none transition-colors duration-500 text-black`}>
             URBAN GRAND
           </span>
         </Link>
@@ -169,7 +169,7 @@ const Navbar = () => {
                         key={sub.label}
                         href={sub.to}
                         download="PANCHSHEEL_BROCHURE.pdf"
-                        className="flex items-center px-5 py-2.5 text-[13px] text-muted-medium hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
+                        className="flex items-center px-5 py-2.5 text-[13px] text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
                       >
                         {sub.label}
                       </a>
@@ -177,7 +177,7 @@ const Navbar = () => {
                       <Link
                         key={sub.label}
                         to={sub.to}
-                        className="flex items-center px-5 py-2.5 text-[13px] text-muted-medium hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
+                        className="flex items-center px-5 py-2.5 text-[13px] text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors border-l-2 border-transparent hover:border-foreground/50"
                       >
                         {sub.label}
                       </Link>
@@ -231,7 +231,7 @@ const Navbar = () => {
                   onClick={() => { setCurrentLang(lang); setLangOpen(false); }}
                   className={`w-full text-left px-5 py-2.5 text-[13px] flex items-center gap-3 transition-colors ${currentLang.code === lang.code
                     ? "text-foreground font-semibold bg-muted/50"
-                    : "text-muted-medium hover:text-foreground hover:bg-muted/30"}`}
+                    : "text-foreground/70 hover:text-foreground hover:bg-muted/30"}`}
                 >
                   <span className="text-base">{lang.flag}</span>
                   {lang.label}
@@ -275,7 +275,7 @@ const Navbar = () => {
 
         {/* ── MOBILE FULLSCREEN MENU ──────────────────────────────────── */}
         <div
-          className={`fixed inset-0 top-0 left-0 w-full h-full bg-background/[0.98] dark:bg-background/[0.99] backdrop-blur-xl z-[60] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22_1_0.36_1)] md:hidden ${mobileOpen
+          className={`force-light fixed inset-0 top-0 left-0 w-full h-full bg-background/[0.98] backdrop-blur-xl z-[60] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.22_1_0.36_1)] md:hidden ${mobileOpen
             ? "opacity-100 pointer-events-auto translate-x-0"
             : "opacity-0 pointer-events-none translate-x-full"
             }`}
@@ -334,7 +334,7 @@ const Navbar = () => {
                             href={sub.to}
                             download="PANCHSHEEL_BROCHURE.pdf"
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3.5 text-[14px] text-muted-medium hover:text-foreground hover:bg-muted/20 transition-colors"
+                            className="block px-8 py-3.5 text-[14px] text-foreground/70 hover:text-foreground hover:bg-muted/20 transition-colors"
                           >
                             {sub.label}
                           </a>
@@ -343,7 +343,7 @@ const Navbar = () => {
                             key={sub.label}
                             to={sub.to}
                             onClick={() => setMobileOpen(false)}
-                            className="block px-8 py-3.5 text-[14px] text-muted-medium hover:text-foreground hover:bg-muted/20 transition-colors"
+                            className="block px-8 py-3.5 text-[14px] text-foreground/70 hover:text-foreground hover:bg-muted/20 transition-colors"
                           >
                             {sub.label}
                           </Link>
@@ -360,7 +360,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 px-6 py-6 border-t border-border/30 space-y-5">
             {/* Language chips */}
             <div>
-              <span className="text-[10px] uppercase tracking-widest text-muted-soft font-semibold block mb-3">Language</span>
+              <span className="text-[10px] uppercase tracking-widest text-foreground/50 font-semibold block mb-3">Language</span>
               <div className="flex gap-2 flex-wrap">
                 {languages.slice(0, 4).map((lang) => (
                   <button
@@ -368,7 +368,7 @@ const Navbar = () => {
                     onClick={() => setCurrentLang(lang)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border transition-all ${currentLang.code === lang.code
                       ? "border-foreground bg-foreground text-background"
-                      : "border-border text-muted-medium hover:border-foreground/50"
+                      : "border-border text-foreground/70 hover:border-foreground/50"
                       }`}
                   >
                     <span>{lang.flag}</span>
@@ -409,10 +409,10 @@ const Navbar = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[70]"
             onClick={() => setLoginOpen(false)}
           />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-2rem)] max-w-md bg-background border border-color-[hsl(38,60%,50%)] rounded-lg p-8 sm:p-10">
+          <div className="force-light fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[71] w-[calc(100%-2rem)] max-w-md bg-background border border-color-[hsl(38,60%,50%)] rounded-lg p-8 sm:p-10">
             <button
               onClick={() => setLoginOpen(false)}
-              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-muted-medium"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 hover:bg-muted/50 rounded-md transition-elegant text-foreground/70"
               aria-label="Close login"
             >
               <X size={18} />
