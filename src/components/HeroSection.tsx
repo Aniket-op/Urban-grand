@@ -69,9 +69,8 @@ const HeroSection = () => {
               <br />
               <span className="italic font-normal">Panchsheel Knitwears</span>
             </h1>
-            <p className="mt-4 sm:mt-8 max-w-md font-body text-sm sm:text-base md:text-lg font-light tracking-wide text-white/70 leading-relaxed">
-              Driven by Quality,
-              Defined by Precision
+            <p className="mt-4 sm:mt-8 max-w-md font-body text-2xl sm:text-lg md:text-3xl font-light tracking-wide text-white/70 leading-relaxed">
+              Driven by Quality, Defined by Precision
             </p>
           </motion.div>
 

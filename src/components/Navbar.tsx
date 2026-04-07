@@ -283,8 +283,8 @@ const Navbar = () => {
           {/* Mobile header */}
           <div className="flex items-center justify-between px-5 h-[72px] border-b border-border/30 flex-shrink-0">
             <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2.5">
-              <img src={logoUrl} alt="Urban Grand Logo" className="rounded-sm mix-blend-multiply" />
-              <span className="font-heading text-[17px] font-bold tracking-[0.08em]">URBAN GRAND</span>
+              <img src={logoUrl} alt="Urban Grand Logo" className="h-10 w-10 rounded-sm mix-blend-multiply" />
+              <span className="font-heading text-[17px] font-bold tracking-[0.08em] text-black">URBAN GRAND</span>
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
