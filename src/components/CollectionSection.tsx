@@ -99,7 +99,7 @@ const CollectionSlideComponent = ({
   isAlt,
 }: {
   slide: CollectionSlide;
-  onEnquire: (category: string) => void;
+  onEnquire: (category: string, image?: string) => void;
   isAlt: boolean;
 }) => {
   const [activeSub, setActiveSub] = useState(0);
@@ -109,17 +109,22 @@ const CollectionSlideComponent = ({
 
   const currentImages = slide.subcategories[activeSub]?.images ?? [];
 
-  // Auto-cycle subcategories every 3 seconds
+  // Auto-cycle images, and change subcategory when all images have been shown
   useEffect(() => {
+    const imagesCount = currentImages.length || 1;
     const timer = setInterval(() => {
-      setActiveSub((prev) => {
-        const next = (prev + 1) % slide.subcategories.length;
-        return next;
+      setActiveImg((prevImg) => {
+        const nextImg = prevImg + 1;
+        if (nextImg >= imagesCount) {
+          // Move to next subcategory
+          setActiveSub((prevSub) => (prevSub + 1) % slide.subcategories.length);
+          return 0; // Reset image index for the next subcategory
+        }
+        return nextImg;
       });
-      setActiveImg(0);
-    }, 5000);
+    }, 2500); // cycle every 2.5 seconds
     return () => clearInterval(timer);
-  }, [slide.subcategories.length]);
+  }, [activeSub, slide.subcategories, currentImages.length]);
 
   const handleSubClick = (idx: number) => {
     setActiveSub(idx);
@@ -267,7 +272,7 @@ const CollectionSlideComponent = ({
       {/* CTA */}
       <div className="flex items-center gap-4 sm:gap-5 pt-2 px-4 sm:px-6 md:px-8 lg:px-0">
         <button
-          onClick={() => onEnquire(slide.id)}
+          onClick={() => onEnquire(slide.id, currentImages[activeImg] ?? currentImages[0])}
           className="group inline-flex items-center gap-2 sm:gap-3 bg-foreground text-background px-6 sm:px-8 py-3.5 sm:py-4 text-[11px] sm:text-xs font-bold tracking-[0.2em] uppercase hover:opacity-85 transition-elegant rounded-md"
         >
           Enquire Now
@@ -303,9 +308,11 @@ const CollectionSlideComponent = ({
 const CollectionSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [enquiryCategory, setEnquiryCategory] = useState<string | undefined>(undefined);
+  const [enquiryImage, setEnquiryImage] = useState<string | undefined>(undefined);
 
-  const handleEnquire = (category: string) => {
+  const handleEnquire = (category: string, image?: string) => {
     setEnquiryCategory(category);
+    setEnquiryImage(image);
     setModalOpen(true);
   };
 
@@ -358,6 +365,7 @@ const CollectionSection = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         prefilledCategory={enquiryCategory}
+        prefilledImage={enquiryImage}
       />
     </>
   );
