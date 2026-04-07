@@ -111,7 +111,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-zinc-300/60 dark:border-zinc-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto border-t border-[hsl(38,60%,50%,0.6)] dark:border-[hsl(38,60%,50%,0.6)] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-zinc-700 dark:text-zinc-400 font-bold">
             © {new Date().getFullYear()} Panchsheel Knitwears. All rights reserved.
           </p>

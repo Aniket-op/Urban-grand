@@ -147,6 +147,24 @@ const CollectionSlideComponent = ({
           />
         </AnimatePresence>
 
+        {/* Active Category Badge Overlay */}
+        <div className="absolute top-6 right-6 z-20 pointer-events-none">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`badge-${activeSub}`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+              className="bg-background/80 backdrop-blur-md border border-white/10 shadow-xl px-4 sm:px-5 py-2 rounded-md"
+            >
+              <p className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-foreground">
+                {slide.subcategories[activeSub]?.label}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
         {/* Image thumbnails when multiple images available */}
         {currentImages.length > 1 && (
           <div className="absolute bottom-4 right-4 flex gap-2 z-10">
