@@ -53,13 +53,13 @@ const Navbar = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const location = useLocation(); // current route
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
 
   // Detect scroll to toggle hero/scrolled state
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => { if (location.pathname === "/") { setScrolled(window.scrollY > 60); } else { setScrolled(true); } }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -101,8 +101,8 @@ const Navbar = () => {
           }`}
       >
         {/* Decorative gold accent line */}
-        <div 
-          className={`absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[hsl(38,60%,50%)] to-transparent transition-opacity duration-500 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`} 
+        <div
+          className={`absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[hsl(38,60%,50%)] to-transparent transition-opacity duration-500 pointer-events-none ${scrolled ? "opacity-100" : "opacity-0"}`}
         />
         {/*
           Logo slides from center → left.
