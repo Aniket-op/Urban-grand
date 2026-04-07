@@ -105,63 +105,68 @@ const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
     };
 
     const inputClass = (field: string) =>
-        `w-full bg-background border ${errors[field] ? "border-red-500" : "border-border"} px-3 sm:px-4 py-3 sm:py-3.5 text-sm focus:outline-none focus:ring-1 focus:ring-foreground/30 transition-colors rounded-sm`;
+        `w-full bg-transparent border-0 border-b-2 ${errors[field] ? "border-red-500" : "border-border"} px-1 py-3 text-sm focus:outline-none focus:ring-0 focus:border-[hsl(38,60%,50%)] hover:border-foreground/30 transition-colors rounded-none placeholder:text-muted-foreground/50`;
 
     return (
-        <div className="w-full h-full overflow-y-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-10">
-            <div className="mb-8">
-                <p className="text-xs uppercase tracking-[0.35em] text-muted-soft font-semibold mb-2">Get In Touch</p>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">Bulk & Custom Orders</h2>
-                <p className="text-sm text-muted-foreground mt-2 leading-relaxed max-w-sm">
-                    Corporate gifting, wedding trousseau, or bulk orders? Fill in the form and our team will be in touch.
+        <div className="w-full h-full overflow-y-auto px-6 sm:px-12 lg:px-16 py-10 sm:py-16">
+            <div className="mb-12">
+                <div className="flex items-center gap-3 mb-4">
+                    <div className="h-[2px] w-10 bg-[hsl(38,60%,50%)]" />
+                    <p className="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-[hsl(38,60%,50%)] font-bold">
+                        Get In Touch
+                    </p>
+                </div>
+                <h2 className="font-display text-4xl sm:text-5xl font-bold text-foreground tracking-tight mb-4">
+                    Bulk & Custom
+                </h2>
+                <p className="text-sm text-muted-medium leading-relaxed max-w-md">
+                    Corporate gifting, wedding trousseau, or wholesale orders? Fill in the details below and our concierge team will reach out to you.
                 </p>
             </div>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Full Name *</label>
+            <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="relative">
+                        <label className="block text-[10px] tracking-[0.2em] uppercase text-foreground mb-1 font-bold">Full Name *</label>
                         <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} className={inputClass("fullName")} placeholder="John Doe" />
-                        {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
+                        {errors.fullName && <p className="absolute -bottom-5 left-0 text-red-500 text-[10px]">{errors.fullName}</p>}
                     </div>
-                    <div>
-                        <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Company / Firm Name</label>
+                    <div className="relative">
+                        <label className="block text-[10px] tracking-[0.2em] uppercase text-foreground mb-1 font-bold">Company / Firm Name</label>
                         <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} className={inputClass("companyName")} placeholder="Optional" />
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Email Address *</label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="relative">
+                        <label className="block text-[10px] tracking-[0.2em] uppercase text-foreground mb-1 font-bold">Email Address *</label>
                         <input type="email" name="emailAddress" value={formData.emailAddress} onChange={handleChange} className={inputClass("emailAddress")} placeholder="you@example.com" />
-                        {errors.emailAddress && <p className="text-red-500 text-xs mt-1">{errors.emailAddress}</p>}
+                        {errors.emailAddress && <p className="absolute -bottom-5 left-0 text-red-500 text-[10px]">{errors.emailAddress}</p>}
                     </div>
-                    <div>
-                        <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Contact Number *</label>
+                    <div className="relative">
+                        <label className="block text-[10px] tracking-[0.2em] uppercase text-foreground mb-1 font-bold">Contact Number *</label>
                         <input type="tel" name="contactNumber" value={formData.contactNumber} onChange={handleChange} className={inputClass("contactNumber")} placeholder="+91 98765 43210" />
-                        {errors.contactNumber && <p className="text-red-500 text-xs mt-1">{errors.contactNumber}</p>}
+                        {errors.contactNumber && <p className="absolute -bottom-5 left-0 text-red-500 text-[10px]">{errors.contactNumber}</p>}
                     </div>
                 </div>
 
-
-                <div>
-                    <label className="block text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2 font-semibold">Details of your Enquiry *</label>
-                    <textarea rows={4} name="details" value={formData.details} onChange={handleChange} className={`${inputClass("details")} resize-none`} placeholder="Describe your requirements, timeline, quantity, etc." />
-                    {errors.details && <p className="text-red-500 text-xs mt-1">{errors.details}</p>}
+                <div className="relative">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-foreground mb-1 font-bold">Details of your Enquiry *</label>
+                    <textarea rows={3} name="details" value={formData.details} onChange={handleChange} className={`${inputClass("details")} resize-none pt-2`} placeholder="Describe your requirements, timeline, quantity, etc." />
+                    {errors.details && <p className="absolute -bottom-5 left-0 text-red-500 text-[10px]">{errors.details}</p>}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button type="submit" onClick={handleSubmit} className="flex-1 flex items-center justify-center gap-2 bg-foreground text-primary-foreground hover:opacity-80 px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
-                        <Send size={15} strokeWidth={2} />
-                        Submit Enquiry
+                <div className="pt-6">
+                    <button type="submit" onClick={handleSubmit} className="group relative w-full overflow-hidden bg-foreground text-background hover:text-white px-8 py-5 text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase transition-all duration-300">
+                        <span className="relative z-10 flex items-center justify-center gap-3">
+                            <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                            Submit Enquiry
+                        </span>
+                        <div className="absolute inset-0 bg-[hsl(38,60%,50%)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     </button>
-                    {/* <button type="button" onClick={handleWhatsAppSubmit} className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-5 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase transition-all duration-300 rounded-sm">
-                        <MessageCircle size={15} strokeWidth={2} />
-                        Send via WhatsApp
-                    </button> */}
                 </div>
 
-                <p className="text-center text-[10px] text-muted-foreground tracking-wider uppercase pt-1">
+                <p className="text-center text-[9px] text-muted-foreground tracking-[0.1em] uppercase pt-4 opacity-70">
                     All fields marked * are required. We respect your privacy.
                 </p>
             </form>

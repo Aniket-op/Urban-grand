@@ -135,8 +135,11 @@ const Contact = () => {
         </div>
 
         {/* ── Right: Enquiry Form ── */}
-        <div className="overflow-y-auto py-50 lg:py-0 flex flex-col justify-center bg-background pt-16 lg:pt-20">
-          <EnquiryForm />
+        <div className="relative overflow-y-auto py-10 lg:py-0 flex flex-col justify-center bg-background pt-16 lg:pt-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-[hsl(38,60%,50%,0.05)] pointer-events-none" />
+          <div className="relative z-10 w-full max-w-2xl mx-auto">
+            <EnquiryForm />
+          </div>
         </div>
       </div>
 
