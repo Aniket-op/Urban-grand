@@ -5,26 +5,59 @@ import { X, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-// ── Men images
-import menJacket1 from "@/assets/men/jacket_1.png";
-import menJacket2 from "@/assets/men/jacket_2.png";
-import menCoat from "@/assets/men/coats1.png";
-import menHoodie1 from "@/assets/men/hoodies_1.png";
-import menHoodie2 from "@/assets/men/hoodies_2.png";
-import menSweater from "@/assets/men/sweatshirts_1.png";
-
 // ── Women images
+import womenCardigans1 from "@/assets/women/cardigans1.jpg";
+import womenCardigans2 from "@/assets/women/cardigans2.jpg";
+import womenCoat1 from "@/assets/women/coat1.png";
+import womenCoat2 from "@/assets/women/coat2.jpg";
+import womenCoat3 from "@/assets/women/coat3.jpg";
+import womenHoodies1 from "@/assets/women/hoodies1.jpg";
+import womenHoodies2 from "@/assets/women/hoodies2.jpg";
+import womenHoodies3 from "@/assets/women/hoodies3.jpg";
 import womenJacket1 from "@/assets/women/jacket_1.png";
 import womenJacket2 from "@/assets/women/jacket_2.png";
-import womenCoat from "@/assets/women/coat1.png";
-import womenSweater from "@/assets/women/sweatshirts_1.png";
+import womenJacket3 from "@/assets/women/jacket_3.jpg";
+import womenSweatshirts1 from "@/assets/women/sweatshirts_1.png";
+import womenSweatshirts2 from "@/assets/women/sweatshirts_2.jpg";
+import womenSweatshirts3 from "@/assets/women/sweatshirts_3.jpg";
+import womenThermal1 from "@/assets/women/thermal1.jpg";
+import womenThermal2 from "@/assets/women/thermal2.jpg";
+
+// ── Men images
+import menCoats1 from "@/assets/men/coats1.png";
+import menCoats2 from "@/assets/men/coats2.jpg";
+import menCoats3 from "@/assets/men/coats3.jpg";
+import menHoodies1 from "@/assets/men/hoodies_1.png";
+import menHoodies2 from "@/assets/men/hoodies_2.png";
+import menHoodies3 from "@/assets/men/hoodies_3.png";
+import menJacket1 from "@/assets/men/jacket_1.png";
+import menJacket2 from "@/assets/men/jacket_2.png";
+import menLower1 from "@/assets/men/lower1.jpg";
+import menLower2 from "@/assets/men/lower2.jpg";
+import menLower3 from "@/assets/men/lower3.webp";
+import menSweatshirts1 from "@/assets/men/sweatshirts_1.png";
+import menSweatshirts2 from "@/assets/men/sweatshirts_2.jpg";
+import menThermal1 from "@/assets/men/thermal1.webp";
+import menThermal2 from "@/assets/men/thermal2.webp";
+import menTshirts1 from "@/assets/men/tshirts1.jpg";
+import menTshirts2 from "@/assets/men/tshirts2.jpg";
+import menTshirts3 from "@/assets/men/tshirts3.jpg";
 
 // ── Kids images
+import kidsCoat1 from "@/assets/kids/coat1.png";
+import kidsCoat2 from "@/assets/kids/coat2.png";
+import kidsCoat3 from "@/assets/kids/coat3.jpeg";
+import kidsHoodies1 from "@/assets/kids/hoodies1.png";
+import kidsHoodies2 from "@/assets/kids/hoodies2.png";
 import kidsJacket1 from "@/assets/kids/jacket_1.png";
 import kidsJacket2 from "@/assets/kids/jacket_2.png";
-import kidsCoat from "@/assets/kids/coat1.png";
-import kidsHoodie1 from "@/assets/kids/hoodies1.png";
-import kidsHoodie2 from "@/assets/kids/hoodies2.png";
+import kidsJacket3 from "@/assets/kids/jacket_3.jpg";
+import kidsSweaters1 from "@/assets/kids/sweaters1.jpg";
+import kidsSweaters2 from "@/assets/kids/sweaters2.jpg";
+import kidsSweaters3 from "@/assets/kids/sweaters3.jpg";
+import kidsThermal1 from "@/assets/kids/thermal1.jpg";
+import kidsThermal2 from "@/assets/kids/thermal2.jpg";
+import kidsThermal3 from "@/assets/kids/thermal3.webp";
 
 type Product = {
   image: string;
@@ -46,10 +79,22 @@ const categoryData: Record<string, CategoryData> = {
     products: [
       { image: menJacket1, subcategory: "Jackets" },
       { image: menJacket2, subcategory: "Jackets" },
-      { image: menCoat, subcategory: "Coats" },
-      { image: menHoodie1, subcategory: "Hoodies" },
-      { image: menHoodie2, subcategory: "Hoodies" },
-      { image: menSweater, subcategory: "Sweatshirts" },
+      { image: menCoats1, subcategory: "Coats" },
+      { image: menCoats2, subcategory: "Coats" },
+      { image: menCoats3, subcategory: "Coats" },
+      { image: menHoodies1, subcategory: "Hoodies" },
+      { image: menHoodies2, subcategory: "Hoodies" },
+      { image: menHoodies3, subcategory: "Hoodies" },
+      { image: menSweatshirts1, subcategory: "Sweatshirts" },
+      { image: menSweatshirts2, subcategory: "Sweatshirts" },
+      { image: menTshirts1, subcategory: "T-Shirts" },
+      { image: menTshirts2, subcategory: "T-Shirts" },
+      { image: menTshirts3, subcategory: "T-Shirts" },
+      { image: menLower1, subcategory: "Lowers" },
+      { image: menLower2, subcategory: "Lowers" },
+      { image: menLower3, subcategory: "Lowers" },
+      { image: menThermal1, subcategory: "Thermal" },
+      { image: menThermal2, subcategory: "Thermal" },
     ],
   },
   women: {
@@ -59,8 +104,20 @@ const categoryData: Record<string, CategoryData> = {
     products: [
       { image: womenJacket1, subcategory: "Jackets" },
       { image: womenJacket2, subcategory: "Jackets" },
-      { image: womenCoat, subcategory: "Coats" },
-      { image: womenSweater, subcategory: "Sweatshirts" },
+      { image: womenJacket3, subcategory: "Jackets" },
+      { image: womenCoat1, subcategory: "Coats" },
+      { image: womenCoat2, subcategory: "Coats" },
+      { image: womenCoat3, subcategory: "Coats" },
+      { image: womenHoodies1, subcategory: "Hoodies" },
+      { image: womenHoodies2, subcategory: "Hoodies" },
+      { image: womenHoodies3, subcategory: "Hoodies" },
+      { image: womenSweatshirts1, subcategory: "Sweatshirts" },
+      { image: womenSweatshirts2, subcategory: "Sweatshirts" },
+      { image: womenSweatshirts3, subcategory: "Sweatshirts" },
+      { image: womenThermal1, subcategory: "Thermal" },
+      { image: womenThermal2, subcategory: "Thermal" },
+      { image: womenCardigans1, subcategory: "Cardigans" },
+      { image: womenCardigans2, subcategory: "Cardigans" },
     ],
   },
   kids: {
@@ -70,9 +127,18 @@ const categoryData: Record<string, CategoryData> = {
     products: [
       { image: kidsJacket1, subcategory: "Jackets" },
       { image: kidsJacket2, subcategory: "Jackets" },
-      { image: kidsCoat, subcategory: "Coats" },
-      { image: kidsHoodie1, subcategory: "Hoodies" },
-      { image: kidsHoodie2, subcategory: "Hoodies" },
+      { image: kidsJacket3, subcategory: "Jackets" },
+      { image: kidsCoat1, subcategory: "Coats" },
+      { image: kidsCoat2, subcategory: "Coats" },
+      { image: kidsCoat3, subcategory: "Coats" },
+      { image: kidsHoodies1, subcategory: "Hoodies" },
+      { image: kidsHoodies2, subcategory: "Hoodies" },
+      { image: kidsSweaters1, subcategory: "Sweaters" },
+      { image: kidsSweaters2, subcategory: "Sweaters" },
+      { image: kidsSweaters3, subcategory: "Sweaters" },
+      { image: kidsThermal1, subcategory: "Thermal" },
+      { image: kidsThermal2, subcategory: "Thermal" },
+      { image: kidsThermal3, subcategory: "Thermal" },
     ],
   },
 };
@@ -384,6 +450,11 @@ const ProductCard = ({
 const CategoryPage = () => {
   const { gender } = useParams<{ gender: string }>();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>("All");
+
+  useEffect(() => {
+    setSelectedSubcategory("All");
+  }, [gender]);
 
   if (!gender || !categoryData[gender]) {
     return <Navigate to="/" replace />;
@@ -393,6 +464,11 @@ const CategoryPage = () => {
 
   // other gender links
   const others = Object.keys(categoryData).filter((k) => k !== gender);
+
+  const subcategories = ["All", ...Array.from(new Set(data.products.map(p => p.subcategory)))];
+  const filteredProducts = selectedSubcategory === "All" 
+    ? data.products 
+    : data.products.filter(p => p.subcategory === selectedSubcategory);
 
   return (
     <div className="min-h-screen bg-background flex flex-col pt-20">
@@ -418,9 +494,10 @@ const CategoryPage = () => {
         </motion.div>
       </div>
 
-      {/* ── Category tabs (switch between men/women/kids) */}
-      <div className="sticky top-20 z-40 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 flex items-center gap-1 h-12 overflow-x-auto">
+      {/* ── Category tabs */}
+      <div className="sticky top-20 z-40 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-sm flex flex-col">
+        {/* Main Categories */}
+        <div className="max-w-7xl mx-auto w-full px-6 flex items-center gap-1 h-12 overflow-x-auto">
           {Object.entries(categoryData).map(([key, cat]) => (
             <Link
               key={key}
@@ -434,6 +511,24 @@ const CategoryPage = () => {
             </Link>
           ))}
         </div>
+        {/* Subcategories Filter */}
+        <div>
+          <div className="max-w-7xl mx-auto w-full px-6 flex items-center gap-1 h-12 overflow-x-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {subcategories.map(sub => (
+              <button
+                key={sub}
+                onClick={() => setSelectedSubcategory(sub)}
+                className={`px-5 py-1.5 text-[11px] font-semibold tracking-[0.15em] uppercase rounded-md transition-all whitespace-nowrap ${
+                  selectedSubcategory === sub
+                    ? "bg-foreground text-background"
+                    : "text-muted-medium hover:text-foreground"
+                }`}
+              >
+                {sub}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* ── Product grid */}
@@ -442,27 +537,33 @@ const CategoryPage = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          key={gender}
+          key={`${gender}-${selectedSubcategory}`}
           className="flex items-center justify-between mb-8"
         >
           <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-semibold">
-            {data.products.length} Products
+            {filteredProducts.length} Products
           </p>
           <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-semibold">
-            {data.title}
+            {selectedSubcategory === "All" ? data.title : `${data.title} - ${selectedSubcategory}`}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-          {data.products.map((product, i) => (
-            <ProductCard
-              key={i}
-              product={product}
-              index={i}
-              onClick={() => setLightboxIndex(i)}
-            />
-          ))}
-        </div>
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-20 text-muted-medium">
+            <p>No products found in this category.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+            {filteredProducts.map((product, i) => (
+              <ProductCard
+                key={`${product.subcategory}-${i}`}
+                product={product}
+                index={i}
+                onClick={() => setLightboxIndex(i)}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Enquire CTA */}
         <div className="mt-16 text-center border-t border-border/30 pt-12">
@@ -505,7 +606,7 @@ const CategoryPage = () => {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <ImageLightbox
-            images={data.products}
+            images={filteredProducts}
             currentIndex={lightboxIndex}
             onClose={() => setLightboxIndex(null)}
             onNavigate={(i) => setLightboxIndex(i)}
