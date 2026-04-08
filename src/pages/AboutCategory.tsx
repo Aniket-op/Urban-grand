@@ -67,11 +67,12 @@ const AboutCategory = () => {
         <div className="flex flex-col gap-20 md:gap-32">
           {data.description.map(({ heading, content, hideImage, customImage, logo }, idx) => {
             const isEven = idx % 2 === 0;
+            const hasBg = idx % 2 !== 0;
 
             return (
               <div
                 key={idx}
-                className={`flex flex-col ${hideImage ? 'items-center text-center' : isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-center gap-12 lg:gap-24 group`}
+                className={`flex flex-col ${hideImage ? 'items-center text-center' : isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-center gap-12 lg:gap-24 group ${hasBg ? 'bg-black/[0.03] dark:bg-white/[0.03] p-8 md:p-12 lg:p-16 rounded-[2rem]' : ''}`}
               >
                 {/* Content Side */}
                 <div className={`w-full ${hideImage ? 'lg:w-8/12 text-center' : 'lg:w-5/12'} flex flex-col justify-center space-y-6 animate-fade-in order-2 lg:order-none`}>
